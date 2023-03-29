@@ -2,17 +2,15 @@
   background-color: #000;
 }
 
-#particle-canvas {
-  position: fixed;
+.p-canvas-webgl {
+  position: absolute;
+  z-index: 10000;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
+  opacity: 15%;
   mix-blend-mode: screen;
-  background: #000;
+  pointer-events: none;
 }
-
 
 .header_side {
   position: fixed;

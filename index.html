@@ -19,7 +19,7 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
 <body class="body">
-<canvas id="particle-canvas"></canvas>
+<canvas class="p-canvas-webgl" id="canvas-webgl"></canvas>
   <div class="modal">
     <div data-w-id="f04b95dc-fa1e-34ce-aad1-f7a7f9e3f803" class="modal_bg">
 	<div class="loading_gif_container" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
@@ -60,7 +60,7 @@
   <div class="main_section">
     <div class="section_mascot">
       <div class="mascot_image">
-        <div data-poster-url="https://uploads-ssl.webflow.com/6420c928e50209084418b848/64220df33b09104ea5537a77_mascot-poster-00001.jpg" data-video-urls="videos/mascot-transcode.mp4,videos/mascot-transcode.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="background-video w-background-video w-background-video-atom"><video id="39f8be2a-390e-3e24-2d4f-9bb5cc9c073a-video" autoplay="" loop="" style="background-image:url(&quot;https://uploads-ssl.webflow.com/6420c928e50209084418b848/64220df33b09104ea5537a77_mascot-poster-00001.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+        <div classdata-poster-url="https://uploads-ssl.webflow.com/6420c928e50209084418b848/64220df33b09104ea5537a77_mascot-poster-00001.jpg" data-video-urls="videos/mascot-transcode.mp4,videos/mascot-transcode.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="background-video w-background-video w-background-video-atom"><video id="39f8be2a-390e-3e24-2d4f-9bb5cc9c073a-video" autoplay="" loop="" style="background-image:url(&quot;https://uploads-ssl.webflow.com/6420c928e50209084418b848/64220df33b09104ea5537a77_mascot-poster-00001.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
             <source src="videos/mascot-transcode.mp4" data-wf-ignore="true">
             <source src="videos/mascot-transcode.webm" data-wf-ignore="true">
           </video></div>
@@ -84,7 +84,7 @@
   <script src="js/webflow.js" type="text/javascript"></script>
   <script src="js/music.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/particles.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/86/three.min.js'></script><script  src="js/script.js"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
 </html>
