@@ -561,6 +561,17 @@
   text-align: center;
 }
 
+.prize-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prize-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+
 @media screen and (max-width: 991px) {
   .header_side {
     padding-right: 40px;
