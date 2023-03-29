@@ -52,20 +52,20 @@ makeHimHighBtn.addEventListener("click", async () => {
   const randomNumber = Math.floor(Math.random() * 3);
   let imageFile, text;
 
-  switch (randomNumber) {
-    case 0:
-      imageFile = "images/pic1.png";
-      text = "TRY AGAIN NEXT TIME";
-      break;
-    case 1:
-      imageFile = "images/pic2.png";
-      text = "GET YOUR REWARD";
-      break;
-    case 2:
-      imageFile = "images/pic3.png";
-      text = "GET YOUR PRIZE";
-      break;
-  }
+switch (randomNumber) {
+  case 0:
+    imageFile = "images/pic1.png";
+    text = "TRY AGAIN NEXT TIME";
+    break;
+  case 1:
+    imageFile = "images/pic2.png";
+    text = `<a href="https://example.com/reward" class="prize-link">GET YOUR REWARD</a>`;
+    break;
+  case 2:
+    imageFile = "images/pic3.png";
+    text = `<a href="https://example.com/prize" class="prize-link">GET YOUR PRIZE</a>`;
+    break;
+}
 
   prizeImg.src = imageFile;
   prizeImg.srcset = `${imageFile} 500w, ${imageFile} 800w`;
