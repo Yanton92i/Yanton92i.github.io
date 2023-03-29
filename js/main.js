@@ -69,7 +69,7 @@ switch (randomNumber) {
 
   prizeImg.src = imageFile;
   prizeImg.srcset = `${imageFile} 500w, ${imageFile} 800w`;
-  prizeText.textContent = text;
+  prizeText.innerHTML = text;
   modal.classList.add("active");
 
   const currentTime = new Date().getTime();
