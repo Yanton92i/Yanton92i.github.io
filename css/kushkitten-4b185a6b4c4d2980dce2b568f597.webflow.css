@@ -188,6 +188,18 @@
   text-align: center;
 }
 
+.high_title {
+  display: block;
+  margin-right: 30px;
+  margin-left: 30px;
+  justify-content: center;
+  align-items: center;
+  font-family: Oswald, sans-serif;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
 .main_section {
   position: fixed;
   left: 0%;
@@ -438,6 +450,8 @@
   cursor: auto;
 }
 
+
+
 .modal_panel {
   position: absolute;
   z-index: 100;
@@ -519,6 +533,11 @@
   .menu_title {
     font-size: 16px;
   }
+  
+  .high_title {
+    font-size: 16px;
+  }
+
 
   .header_connect_mobile {
     padding-right: 40px;
