@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const prizeImg = document.querySelector(".prizes_img img");
   const prizeText = document.querySelector(".prize");
   const loadingGifContainer = document.querySelector(".loading_gif_container"); // Add this line
+  
+  function preloadImages(imageArray) {
+    imageArray.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }
+
+  preloadImages(["images/pic1.png", "images/pic2.png", "images/pic3.png"]);
 
 
   function updateCountdown() {
