@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButton = document.querySelector(".close_button");
   const prizeImg = document.querySelector(".prizes_img img");
   const prizeText = document.querySelector(".prize");
+  const loadingGifContainer = document.querySelector(".loading_gif_container"); // Add this line
+
 
   function updateCountdown() {
     const lastClickTime = parseInt(localStorage.getItem("lastClickTime"), 10);
@@ -28,42 +30,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  connectWalletBtn.addEventListener("click", () => {
-    // Add your wallet connection logic here.
-    // Once connected, enable the "Make it High" button.
-    updateCountdown();
-  });
+makeHimHighBtn.addEventListener("click", async () => {
+  loadingGifContainer.style.display = "flex"; // Show the loading GIF
+  modal.querySelector(".modal_panel").style.visibility = "hidden"; // Hide the modal panel
 
-  makeHimHighBtn.addEventListener("click", () => {
-    const randomNumber = Math.floor(Math.random() * 3);
-    let imageFile, text;
+  // Simulate a minimum of 3-second delay
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    switch (randomNumber) {
-      case 0:
-        imageFile = "images/pic1.png";
-        text = "TRY AGAIN NEXT TIME";
-        break;
-      case 1:
-        imageFile = "images/pic2.png";
-        text = "GET YOUR REWARD";
-        break;
-      case 2:
-        imageFile = "images/pic3.png";
-        text = "GET YOUR PRIZE";
-        break;
-    }
+  const randomNumber = Math.floor(Math.random() * 3);
+  let imageFile, text;
 
-    prizeImg.src = imageFile;
-    prizeImg.srcset = `${imageFile} 500w, ${imageFile} 800w`;
-    prizeText.textContent = text;
-    modal.classList.add("active");
+  switch (randomNumber) {
+    case 0:
+      imageFile = "images/pic1.png";
+      text = "TRY AGAIN NEXT TIME";
+      break;
+    case 1:
+      imageFile = "images/pic2.png";
+      text = "GET YOUR REWARD";
+      break;
+    case 2:
+      imageFile = "images/pic3.png";
+      text = "GET YOUR PRIZE";
+      break;
+  }
 
-    const currentTime = new Date().getTime();
-    localStorage.setItem("lastClickTime", currentTime);
-    updateCountdown();
-  });
+  prizeImg.src = imageFile;
+  prizeImg.srcset = `${imageFile} 500w, ${imageFile} 800w`;
+  prizeText.textContent = text;
+  modal.classList.add("active");
+
+  const currentTime = new Date().getTime();
+  localStorage.setItem("lastClickTime", currentTime);
+  updateCountdown();
+
+  modal.querySelector(".modal_panel").style.visibility = "visible"; // Show the modal panel
+  loadingGifContainer.style.display = "none"; // Hide the loading GIF
+});
+
+
+
 
   modalBg.addEventListener("click", () => {
     modal.classList.remove("active");
