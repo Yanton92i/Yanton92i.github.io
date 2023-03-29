@@ -59,11 +59,11 @@ switch (randomNumber) {
     break;
   case 1:
     imageFile = "images/pic2.png";
-    text = `<a href="https://example.com/reward" class="prize-link">GET YOUR REWARD</a>`;
+    text = `<a href="https://t.me/printkittens" class="prize-link">GET YOUR REWARD</a>`;
     break;
   case 2:
     imageFile = "images/pic3.png";
-    text = `<a href="https://example.com/prize" class="prize-link">GET YOUR PRIZE</a>`;
+    text = `<a href="https://t.me/printkittens" class="prize-link">GET YOUR PRIZE</a>`;
     break;
 }
 
