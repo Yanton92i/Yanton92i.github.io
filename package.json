@@ -1,0 +1,14 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
+    "web3": "^1.6.1",
+    "web3modal": "^1.9.3"
+  }
+}
