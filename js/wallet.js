@@ -9,6 +9,7 @@ export const web3Modal = new Web3Modal({
   providerOptions: providerOptions,
 });
 
+
 export let web3;
 export let userAccount;
 
