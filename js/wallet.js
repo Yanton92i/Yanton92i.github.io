@@ -5,7 +5,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
 export const providerOptions = {};
 export const web3Modal = new Web3Modal({
   network: "arbitrum",
-  cacheProvider: true,
+  cacheProvider: false, // Change this line
   providerOptions: providerOptions,
 });
 
