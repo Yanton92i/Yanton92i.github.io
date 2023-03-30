@@ -34179,7 +34179,8 @@ var providerOptions = {};
 exports.providerOptions = providerOptions;
 var web3Modal = new _web3modal.default({
   network: "arbitrum",
-  cacheProvider: true,
+  cacheProvider: false,
+  // Change this line
   providerOptions: providerOptions
 });
 exports.web3Modal = web3Modal;
@@ -34333,7 +34334,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64571" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50034" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
