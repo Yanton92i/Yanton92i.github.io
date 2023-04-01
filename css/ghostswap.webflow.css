@@ -11,6 +11,16 @@
   background-color: #000;
 }
 
+.p-canvas-webgl {
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  opacity: 11%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
 .body {
   background-color: #000;
 }
@@ -20,6 +30,7 @@
   height: 268.2207px;
   margin-top: 0px;
   background-color: transparent;
+  animation: fadeIn 2s ease-in-out;
 }
 
 .logo_text {
@@ -27,6 +38,7 @@
   height: 80.8987px;
   margin-top: 64.44px;
   background-color: transparent;
+  animation: fadeIn 2s ease-in-out, slideUp 2s ease-in-out;
 }
 
 .footer {
@@ -45,6 +57,7 @@
   width: 382.916px;
   height: 34.6074px;
   background-color: transparent;
+  animation: fadeIn 2s ease-in-out, flicker 1.5s ease-in-out infinite;
 }
 
 .ghost {
@@ -88,3 +101,40 @@
     width: 100%;
   }
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #fff;
+  }
+  50% {
+    box-shadow: 0 0 20px #fff, 0 0 30px #fff;
+  }
+}
+
