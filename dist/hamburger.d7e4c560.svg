@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.1 18" style="enable-background: new 0 0 25.1 18" xml:space="preserve">
+<style>.st0 {
+  fill: #fff;
+}
+
+.st1 {
+  display: none;
+}
+
+.st2 {
+  fill: #191919;
+  display: inline;
+}
+
+.st3 {
+  fill: #fff;
+  display: inline;
+}
+
+.st4 {
+  display: inline;
+}
+
+.st5 {
+  fill: #191919;
+}
+
+.st6 {
+  fill: #b0bec5;
+}
+
+.st7 {
+  fill: #cfd8dc;
+}
+
+</style>
+<g id="Calque_1">
+	<g>
+		<path class="st0" d="M23.2,3.8H1.9C0.8,3.8,0,2.9,0,1.9v0C0,0.8,0.8,0,1.9,0h21.3c1,0,1.9,0.8,1.9,1.9v0
+			C25.1,2.9,24.2,3.8,23.2,3.8z"></path>
+		<path class="st0" d="M23.2,10.9H1.9C0.8,10.9,0,10,0,9v0c0-1,0.8-1.9,1.9-1.9h21.3c1,0,1.9,0.8,1.9,1.9v0
+			C25.1,10,24.2,10.9,23.2,10.9z"></path>
+		<path class="st0" d="M23.2,18H1.9c-1,0-1.9-0.8-1.9-1.9v0c0-1,0.8-1.9,1.9-1.9h21.3c1,0,1.9,0.8,1.9,1.9v0
+			C25.1,17.2,24.2,18,23.2,18z"></path>
+	</g>
+</g>
+<g id="Calque_3" class="st1">
+	<path class="st2" d="M12.5-5.1C4.7-5.1-1.6,1.2-1.6,9s6.3,14.1,14.1,14.1S26.7,16.8,26.7,9S20.3-5.1,12.5-5.1z"></path>
+	<polygon class="st3" points="18.2,9 8.9,14.1 8.9,3.9 18.2,9 18.2,9 	"></polygon>
+</g>
+<g id="Calque_2" class="st1">
+	<g class="st4">
+		<path class="st5" d="M12.5-5.1C4.7-5.1-1.6,1.2-1.6,9s6.3,14.1,14.1,14.1S26.7,16.8,26.7,9S20.3-5.1,12.5-5.1z"></path>
+		<path class="st0" d="M19.6,2.6l-2.6,13.5c0,0-0.1,0.6-0.9,0.6c-0.4,0-0.6-0.2-0.6-0.2l-5.7-4.8l-2.8-1.4l-3.6-1
+			c0,0-0.6-0.2-0.6-0.7c0-0.4,0.7-0.7,0.7-0.7l15-6c0,0,0.5-0.2,0.8-0.2c0.2,0,0.4,0.1,0.4,0.4C19.6,2.5,19.6,2.6,19.6,2.6z"></path>
+		<path class="st6" d="M11.8,13.6L9.4,16c0,0-0.1,0.1-0.2,0.1c0,0-0.1,0-0.2,0l0.7-4.2L11.8,13.6z"></path>
+		<path class="st7" d="M16.7,4.9c-0.1-0.2-0.3-0.2-0.5-0.1l-9.3,5.6c0,0,1.5,4.2,1.7,4.9C8.8,16,9,16,9,16l0.7-4.2l6.9-6.4
+			C16.8,5.3,16.8,5.1,16.7,4.9z"></path>
+	</g>
+</g>
+</svg>
