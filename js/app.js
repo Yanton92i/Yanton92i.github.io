@@ -8,6 +8,7 @@ async function initialize() {
     provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/06f705ef601d4f1d9a951815130d6ecd");
     web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/06f705ef601d4f1d9a951815130d6ecd"));
   }
+  enableInteractButton();
 }
 
 async function connectWallet() {
@@ -50,6 +51,7 @@ const interactButton = document.querySelector('.interact');
 async function enableInteractButton() {
   if (!connectedAccount) {
     interactButton.disabled = true;
+    interactButton.textContent = "Interact";
     return;
   }
 
@@ -57,10 +59,13 @@ async function enableInteractButton() {
 
   if (hasEnoughTokens) {
     interactButton.disabled = false;
+    interactButton.textContent = "Interact";
   } else {
     interactButton.disabled = true;
+    interactButton.textContent = "Insufficient SHIN Tokens";
   }
 }
+
 
 interactButton.addEventListener('click', handleInteractButtonClick);
 
@@ -72,11 +77,13 @@ let countdownEnd;
 function startCountdown() {
   const currentTime = Math.floor(Date.now() / 1000);
   countdownEnd = currentTime + COUNTDOWN_SECONDS;
-  localStorage.setItem('countdownEnd', countdownEnd);
+  localStorage.setItem("countdownEnd", countdownEnd);
   updateCountdown();
 
-  interactButton.disabled = true;
+  interactButton.disabled = true; // Disable the interact button during the countdown
+  interactButton.originalText = interactButton.textContent; // Store the original button text
 }
+
 
 function updateCountdown() {
   const currentTime = Math.floor(Date.now() / 1000);
@@ -86,14 +93,19 @@ function updateCountdown() {
     clearTimeout(countdownTimeout);
     enableInteractButton();
   } else {
-    interactButton.textContent = `Interact (${Math.floor(remainingSeconds / 3600)}:${Math.floor((remainingSeconds % 3600) / 60)}:${remainingSeconds % 60})`;
+    interactButton.textContent = `${Math.floor(remainingSeconds / 3600)}:${Math.floor((remainingSeconds % 3600) / 60)}:${remainingSeconds % 60}`; // Display countdown text
     countdownTimeout = setTimeout(updateCountdown, 1000);
   }
 }
 
+
 function handleInteractButtonClick() {
   startCountdown();
+  interactButton.addEventListener("click", () => {
+    interactButton.textContent = interactButton.originalText; // Restore original button text
+  });
 }
+
 
 initializeCountdown();
 
