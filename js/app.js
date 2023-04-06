@@ -2,17 +2,20 @@ let web3;
 let provider;
 
 async function initialize() {
+  let provider;
+  
   if (window.ethereum) {
     web3 = new Web3(window.ethereum);
   } else {
-    const rpcUrl = 'https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID';
-    web3 = new Web3(new Web3.providers.HttpProvider(rpcUrl));
+    provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/06f705ef601d4f1d9a951815130d6ecd");
+    web3 = new Web3(provider);
   }
-
-  provider = new WalletConnectProvider({
-    infuraId: 'YOUR_INFURA_PROJECT_ID',
-  });
 }
+
+const walletConnectProvider = new WalletConnectProvider({
+  infuraId: '06f705ef601d4f1d9a951815130d6ecd',
+});
+
 
 initialize();
 
