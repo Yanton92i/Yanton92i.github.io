@@ -2,30 +2,19 @@ let web3;
 let provider;
 
 async function initialize() {
-  let provider;
-  
   if (window.ethereum) {
     web3 = new Web3(window.ethereum);
   } else {
-    provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/06f705ef601d4f1d9a951815130d6ecd");
-    web3 = new Web3(provider);
+    provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/06f705ef601d4f1d9a951815130d6ecd");
+    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/06f705ef601d4f1d9a951815130d6ecd"));
   }
 }
-
-const walletConnectProvider = new WalletConnectProvider({
-  infuraId: '06f705ef601d4f1d9a951815130d6ecd',
-});
-
-
-initialize();
-
-let connectedAccount;
 
 async function connectWallet() {
   try {
     if (window.ethereum) {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
-      connectedAccount = web3.eth.accounts[0];
+      connectedAccount = (await web3.eth.getAccounts())[0];
       enableInteractButton();
     } else {
       await provider.enable();
@@ -38,6 +27,9 @@ async function connectWallet() {
   }
 }
 
+initialize();
+
+let connectedAccount;
 document.querySelector('.connect').addEventListener('click', connectWallet);
 
 const SHIN_TOKEN_ADDRESS = '0x323efd000a71F2567534e66eC6ae1b2b789a623a';
