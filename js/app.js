@@ -110,7 +110,7 @@ function initializeCountdown() {
   if (countdownEnd) {
     updateCountdown();
   } else {
-    enableInteractButton();
+    checkRequirements();
   }
 }
 
@@ -139,6 +139,7 @@ interactButton.addEventListener('click', async () => {
     return;
   }
 
+  interactButton.disabled = true; // Disable the button to prevent further clicks
   handleInteractButtonClick();
 });
 
@@ -146,3 +147,4 @@ document.querySelector('.connect').addEventListener('click', async () => {
   await connectWallet();
   await checkRequirements();
 });
+
