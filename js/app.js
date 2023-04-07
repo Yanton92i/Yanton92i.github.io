@@ -66,7 +66,6 @@ async function enableInteractButton() {
   }
 }
 
-
 interactButton.addEventListener('click', handleInteractButtonClick);
 
 const COUNTDOWN_SECONDS = 24 * 60 * 60;
@@ -80,10 +79,9 @@ function startCountdown() {
   localStorage.setItem("countdownEnd", countdownEnd);
   updateCountdown();
 
-  interactButton.disabled = true; // Disable the interact button during the countdown
-  interactButton.originalText = interactButton.textContent; // Store the original button text
+  interactButton.disabled = true;
+  interactButton.originalText = interactButton.textContent;
 }
-
 
 function updateCountdown() {
   const currentTime = Math.floor(Date.now() / 1000);
@@ -93,19 +91,16 @@ function updateCountdown() {
     clearTimeout(countdownTimeout);
     enableInteractButton();
   } else {
-    interactButton.textContent = `${Math.floor(remainingSeconds / 3600)}:${Math.floor((remainingSeconds % 3600) / 60)}:${remainingSeconds % 60}`; // Display countdown text
+    interactButton.textContent = `${Math.floor(remainingSeconds / 3600)}:${Math.floor((remainingSeconds % 3600) / 60)}:${remainingSeconds % 60}`;
     countdownTimeout = setTimeout(updateCountdown, 1000);
   }
 }
 
-
 function handleInteractButtonClick() {
-  startCountdown();
-  interactButton.addEventListener("click", () => {
-    interactButton.textContent = interactButton.originalText; // Restore original button text
-  });
+  if (!interactButton.disabled) {
+    startCountdown();
+  }
 }
-
 
 initializeCountdown();
 
@@ -118,3 +113,36 @@ function initializeCountdown() {
     enableInteractButton();
   }
 }
+
+async function checkRequirements() {
+  if (!connectedAccount) {
+    interactButton.disabled = true;
+    interactButton.textContent = "Interact";
+    return false;
+  }
+
+  const hasEnoughTokens = await checkTokenBalance(connectedAccount);
+
+  if (hasEnoughTokens) {
+    interactButton.disabled = false;
+    interactButton.textContent = "Interact";
+    return true;
+  } else {
+    interactButton.disabled = true;
+    interactButton.textContent = "Insufficient SHIN Tokens";
+    return false;
+  }
+}
+
+interactButton.addEventListener('click', async () => {
+  if (!(await checkRequirements())) {
+    return;
+  }
+
+  handleInteractButtonClick();
+});
+
+document.querySelector('.connect').addEventListener('click', async () => {
+  await connectWallet();
+  await checkRequirements();
+});
