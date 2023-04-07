@@ -46,6 +46,37 @@ async function checkTokenBalance(account) {
   return hasEnoughTokens;
 }
 
+async function detectTokenBalanceChanges() {
+  const contractABI = [{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
+  const tokenContract = new web3.eth.Contract(contractABI, SHIN_TOKEN_ADDRESS);
+
+  const currentBlockNumber = await web3.eth.getBlockNumber();
+  tokenContract.events.Transfer({fromBlock: currentBlockNumber}, (error, event) => {
+    if (error) {
+      console.error(error);
+    } else if (connectedAccount === event.returnValues.from || connectedAccount === event.returnValues.to) {
+      enableInteractButton();
+    }
+  });
+}
+
+// Wallet event listener
+if (window.ethereum) {
+  window.ethereum.on('accountsChanged', async (accounts) => {
+    connectedAccount = accounts[0];
+    enableInteractButton();
+  });
+
+  window.ethereum.on('chainChanged', async () => {
+    // Reload the page when the chain changes
+    window.location.reload();
+  });
+}
+
+initialize();
+detectTokenBalanceChanges();
+
+
 const interactButton = document.querySelector('.interact');
 
 async function enableInteractButton() {
@@ -79,8 +110,8 @@ function startCountdown() {
   localStorage.setItem("countdownEnd", countdownEnd);
   updateCountdown();
 
-  interactButton.disabled = true;
-  interactButton.originalText = interactButton.textContent;
+  interactButton.disabled = true; // Disable the interact button during the countdown
+  interactButton.originalText = interactButton.textContent; // Store the original button text
 }
 
 function updateCountdown() {
@@ -91,60 +122,46 @@ function updateCountdown() {
     clearTimeout(countdownTimeout);
     enableInteractButton();
   } else {
-    interactButton.textContent = `${Math.floor(remainingSeconds / 3600)}:${Math.floor((remainingSeconds % 3600) / 60)}:${remainingSeconds % 60}`;
+    interactButton.textContent = `${Math.floor(remainingSeconds / 3600)}:${Math.floor((remainingSeconds % 3600) / 60)}:${remainingSeconds % 60}`; // Display countdown text
     countdownTimeout = setTimeout(updateCountdown, 1000);
   }
 }
 
 function handleInteractButtonClick() {
-  if (!interactButton.disabled) {
-    startCountdown();
+  startCountdown();
+  
+  // Add your code here to perform the required action when the interact button is clicked
+  alert("Interact button clicked! Perform the required action.");
+}
+
+function initializeCountdown() {
+  const storedCountdownEnd = localStorage.getItem("countdownEnd");
+
+  if (storedCountdownEnd) {
+    const currentTime = Math.floor(Date.now() / 1000);
+
+    if (currentTime < storedCountdownEnd) {
+      countdownEnd = storedCountdownEnd;
+      updateCountdown();
+    } else {
+      enableInteractButton();
+    }
+  } else {
+    enableInteractButton();
   }
 }
 
 initializeCountdown();
 
-function initializeCountdown() {
-  countdownEnd = parseInt(localStorage.getItem('countdownEnd'), 10);
+// Wallet event listener
+if (window.ethereum) {
+  window.ethereum.on('accountsChanged', async (accounts) => {
+    connectedAccount = accounts[0];
+    enableInteractButton();
+  });
 
-  if (countdownEnd) {
-    updateCountdown();
-  } else {
-    checkRequirements();
-  }
+  window.ethereum.on('chainChanged', async () => {
+    // Reload the page when the chain changes
+    window.location.reload();
+  });
 }
-
-async function checkRequirements() {
-  if (!connectedAccount) {
-    interactButton.disabled = true;
-    interactButton.textContent = "Interact";
-    return false;
-  }
-
-  const hasEnoughTokens = await checkTokenBalance(connectedAccount);
-
-  if (hasEnoughTokens) {
-    interactButton.disabled = false;
-    interactButton.textContent = "Interact";
-    return true;
-  } else {
-    interactButton.disabled = true;
-    interactButton.textContent = "Insufficient SHIN Tokens";
-    return false;
-  }
-}
-
-interactButton.addEventListener('click', async () => {
-  if (!(await checkRequirements())) {
-    return;
-  }
-
-  interactButton.disabled = true; // Disable the button to prevent further clicks
-  handleInteractButtonClick();
-});
-
-document.querySelector('.connect').addEventListener('click', async () => {
-  await connectWallet();
-  await checkRequirements();
-});
-

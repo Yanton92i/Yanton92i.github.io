@@ -17,3 +17,9 @@
 .connect {
   margin-bottom: 15px;
 }
+
+button:disabled {
+  background-color: #cccccc;
+  color: #ffffff;
+  cursor: not-allowed;
+}
