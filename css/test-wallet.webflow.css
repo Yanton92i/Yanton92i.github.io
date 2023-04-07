@@ -23,3 +23,8 @@ button:disabled {
   color: #ffffff;
   cursor: not-allowed;
 }
+
+.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

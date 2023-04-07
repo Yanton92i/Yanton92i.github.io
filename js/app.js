@@ -1,5 +1,8 @@
 let web3;
 let provider;
+const connectButton = document.querySelector(".connect");
+const interactButton = document.querySelector(".interact");
+
 
 async function initialize() {
   if (window.ethereum) {
@@ -82,17 +85,20 @@ const interactButton = document.querySelector('.interact');
 async function enableInteractButton() {
   if (!connectedAccount) {
     interactButton.disabled = true;
+    interactButton.classList.add("disabled");
     interactButton.textContent = "Interact";
     return;
   }
 
   const hasEnoughTokens = await checkTokenBalance(connectedAccount);
-
+  
   if (hasEnoughTokens) {
     interactButton.disabled = false;
+    interactButton.classList.remove("disabled");
     interactButton.textContent = "Interact";
   } else {
     interactButton.disabled = true;
+    interactButton.classList.add("disabled");
     interactButton.textContent = "Insufficient SHIN Tokens";
   }
 }
@@ -128,8 +134,10 @@ function updateCountdown() {
 }
 
 function handleInteractButtonClick() {
+  if (interactButton.disabled) return; // Prevent the countdown from starting if the button is disabled
+
   startCountdown();
-  
+
   // Add your code here to perform the required action when the interact button is clicked
   alert("Interact button clicked! Perform the required action.");
 }
