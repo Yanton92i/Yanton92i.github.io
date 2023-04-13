@@ -183,7 +183,7 @@
   display: flex;
   width: 100%;
   height: auto;
-  margin-top: 0px;
+  margin-top: 9px;
   margin-bottom: 0px;
   padding-top: 9px;
   padding-bottom: 0px;
@@ -227,7 +227,6 @@
   height: 50px;
   flex: 0 0 auto;
   background-color: transparent;
-  cursor: pointer;
 }
 
 .field-label {
@@ -271,11 +270,6 @@
 .swap_icon {
   border-radius: 50px;
   background-color: transparent;
-}
-
-.swap_icon:hover {
-  box-shadow: 0 0 10px 2px rgba(83, 235, 194, 0.5);
-  transition: box-shadow 0.3s ease-in-out;
 }
 
 .form {
@@ -450,10 +444,6 @@
   color: #333;
   font-weight: 400;
   text-align: right;
-    background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: text;
 }
 
 .swap_now_button {
@@ -555,7 +545,6 @@
   align-items: center;
   border-radius: 50px;
   background-color: transparent;
-  cursor: pointer;
 }
 
 .swap_h1 {
@@ -621,7 +610,6 @@
   align-items: center;
   border-radius: 50px;
   background-color: transparent;
-  cursor: pointer;
 }
 
 .div-block-18 {
@@ -719,7 +707,7 @@
 }
 
 .logo {
-  width: 350px;
+  width: 300px;
   max-width: none;
 }
 
@@ -728,7 +716,6 @@
   color: #fff;
   font-size: 16px;
   font-weight: 700;
-  background-color: transparent;
 }
 
 .menu_link_button {
@@ -776,4 +763,348 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.main_content {
+  display: flex;
+  margin-top: 66px;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+.swap_module_mobile {
+  display: flex;
+  width: 685px;
+  height: auto;
+  padding: 30px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #489174;
+  border-radius: 20px;
+  background-color: #00110e;
+  background-image: linear-gradient(45deg, #000c0a, #001e18);
+}
+
+.main_content_mobile {
+  display: none;
+  margin-top: 66px;
+  padding-right: 20px;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+.hamburger_menu {
+  display: none;
+}
+
+.menu_mobile_container {
+  display: none;
+}
+
+.menu_text_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 991px) {
+  .swap_description {
+    padding-right: 0px;
+    align-items: center;
+  }
+
+  .swap_module {
+    display: none;
+  }
+
+  .header_items {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .swap_description_title {
+    justify-content: center;
+  }
+
+  .swap_description_p1 {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .swap_description_p2 {
+    text-align: center;
+  }
+
+  .main_content_mobile {
+    display: flex;
+  }
+
+  .hamburger_menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .swap_description {
+    padding-right: 0px;
+    align-items: center;
+  }
+
+  .swap_module {
+    display: none;
+  }
+
+  .header_items {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .swap_description_title {
+    justify-content: center;
+  }
+
+  .search_bar {
+    display: none;
+  }
+
+  .swap_description_p2 {
+    display: none;
+  }
+
+  .text-block-11 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .text-block-12 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .logo {
+    width: 250px;
+  }
+
+  .main_content {
+    margin-top: 28px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .swap_module_mobile {
+    width: 100%;
+  }
+
+  .main_content_mobile {
+    display: flex;
+    margin-top: 28px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .hamburger_menu {
+    display: flex;
+    width: 32px;
+    height: 32px;
+  }
+
+  .menu_mobile_container {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 999;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    background-color: #000;
+    opacity: 0.89;
+  }
+
+  .menu_text_mobile {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    z-index: 1000;
+    display: flex;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .text_menu_mobile {
+    margin-top: 46px;
+    margin-bottom: 46px;
+    font-family: Oswald, sans-serif;
+    color: #53ebc2;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .close {
+    position: absolute;
+    left: auto;
+    top: 0%;
+    right: 0%;
+    bottom: auto;
+    width: 32px;
+    height: 32px;
+    margin-top: 60px;
+    margin-right: 22px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    background-color: transparent;
+  }
+
+  .menu_mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu_show_hide {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .header {
+    height: 115px;
+  }
+
+  .swap_title {
+    height: 57px;
+  }
+
+  .send_receive {
+    height: 150px;
+  }
+
+  .poof {
+    height: 70px;
+    margin-top: 12px;
+  }
+
+  .swap_send {
+    height: 70px;
+  }
+
+  .swap_button {
+    top: 56px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .swap_input {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .text-block-2-copy {
+    font-size: 12px;
+  }
+
+  .swap_now_button {
+    height: 45px;
+  }
+
+  .swap_info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-block-3 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .text-block-4 {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .text-block-5 {
+    text-align: center;
+  }
+
+  .swap_video {
+    margin-top: 11px;
+    padding-left: 0px;
+  }
+
+  .text-block-6 {
+    text-align: center;
+  }
+
+  .refresh_button {
+    width: 28px;
+    height: 28px;
+  }
+
+  .swap_h1 {
+    font-size: 30px;
+  }
+
+  .swap_under {
+    font-size: 12px;
+  }
+
+  .text-block-11 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .text-block-12 {
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 200px;
+  }
+
+  .main_content {
+    margin-top: 15px;
+  }
+
+  .swap_module_mobile {
+    padding: 15px;
+  }
+
+  .main_content_mobile {
+    margin-top: 12px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+
+  .bold-text-2 {
+    text-align: left;
+  }
+
+  .hamburger_menu {
+    width: 32px;
+    height: 32px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    background-color: transparent;
+  }
+
+  .menu_mobile_container {
+    padding-right: 0px;
+    padding-bottom: 20px;
+  }
 }
