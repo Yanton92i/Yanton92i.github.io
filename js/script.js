@@ -150,7 +150,7 @@ class Fog {
 
           vec4 texColor = texture2D(tex, vUv);
           vec3 color = (texColor.rgb - vBlink * length(p) * 0.8) * vColor;
-          float opacity = texColor.a * 0.36;
+          float opacity = texColor.a * 0.8;
 
           gl_FragColor = vec4(color, opacity);
         }
