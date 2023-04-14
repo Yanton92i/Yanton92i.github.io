@@ -74,6 +74,7 @@
 }
 
 .swap_module {
+  position: relative;
   display: flex;
   width: 685px;
   height: auto;
@@ -351,6 +352,7 @@
 }
 
 .text-block {
+  margin-right: 10px;
   font-family: 'Open Sans', sans-serif;
   color: #fff;
   font-weight: 400;
@@ -705,6 +707,7 @@
 
 .text-block-13 {
   color: #befeea;
+  font-size: 18px;
   line-height: 22px;
 }
 
@@ -724,7 +727,7 @@
   background-color: transparent;
 }
 
-.menu_link_button:hover {
+.menu_link:hover {
   color: #53ebc2;
 }
 
@@ -751,10 +754,6 @@
   font-family: 'Open Sans', sans-serif;
   color: #1e7061;
   font-weight: 600;
-      background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: text;
 }
 
 .swap_receive_left {
@@ -773,6 +772,7 @@
   padding-right: 20px;
   padding-left: 20px;
   justify-content: center;
+  opacity: 1;
 }
 
 .swap_module_mobile {
@@ -811,6 +811,148 @@
   display: none;
 }
 
+.coin_selector_arrow {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.send_coin_expand {
+  position: absolute;
+  left: 45%;
+  top: 33.3%;
+  right: 0%;
+  bottom: auto;
+  z-index: 2500;
+  display: none;
+  overflow: auto;
+  width: 50%;
+  height: 66.7%;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  border-radius: 9px;
+  background-color: #000807;
+  opacity: 1;
+}
+
+.coin_container {
+  display: flex;
+  height: 55px;
+  align-items: center;
+}
+
+.coin_container:hover {
+  background-color: #0f0f0f;
+}
+
+.coin {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: transparent;
+}
+
+.coin_name {
+  margin-left: 15px;
+  font-family: 'Open Sans', sans-serif;
+  color: #b7feeb;
+  font-size: 16px;
+}
+
+.separator {
+  height: 1px;
+  background-color: #9f9f9f;
+  opacity: 0.14;
+}
+
+.search_currency {
+  display: flex;
+  height: 50px;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #24493f;
+  border-radius: 8px;
+  background-color: #000;
+}
+
+.text-block-15 {
+  font-family: 'Open Sans', sans-serif;
+  color: #53ebc2;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: text;
+}
+
+.receive_coin_expand {
+  position: absolute;
+  left: 45%;
+  top: 49.3%;
+  right: 0%;
+  bottom: auto;
+  z-index: 2500;
+  display: none;
+  overflow: auto;
+  width: 50%;
+  height: 50.7%;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  border-radius: 9px;
+  background-color: #000807;
+  opacity: 1;
+}
+
+.container_mobile {
+  display: flex;
+  width: 685px;
+  height: auto;
+  padding: 30px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #489174;
+  border-radius: 20px;
+  background-color: #00110e;
+  background-image: linear-gradient(45deg, #000c0a, #001e18);
+}
+
+.coin_selector_arrow_mobile {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+}
+
+.receiv_coin_expand {
+  position: absolute;
+  left: 45%;
+  top: 33.3%;
+  right: 0%;
+  bottom: auto;
+  z-index: 2500;
+  display: none;
+  overflow: auto;
+  width: 50%;
+  height: 66.7%;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  border-radius: 9px;
+  background-color: #000807;
+  opacity: 1;
+}
+
+.image {
+  cursor: auto;
+}
+
 @media screen and (max-width: 991px) {
   .swap_description {
     padding-right: 0px;
@@ -839,12 +981,61 @@
     text-align: center;
   }
 
+  .swap_module_mobile {
+    position: relative;
+  }
+
   .main_content_mobile {
+    position: relative;
     display: flex;
+    padding-bottom: 0px;
   }
 
   .hamburger_menu {
     display: none;
+  }
+
+  .send_coin_expand {
+    position: absolute;
+    left: 45%;
+    top: 33.3%;
+    right: 0%;
+    bottom: 0%;
+    display: none;
+    height: 66.7%;
+  }
+
+  .receive_coin_expand {
+    left: 45%;
+    top: 49.3%;
+    display: block;
+    height: 50.7%;
+  }
+
+  .container_mobile {
+    position: absolute;
+    display: flex;
+    width: 685px;
+    height: 100%;
+    padding: 0px;
+    justify-content: flex-start;
+    border-width: 0px;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  .coin_selector_arrow_mobile {
+    cursor: pointer;
+  }
+
+  .receiv_coin_expand {
+    position: absolute;
+    left: 45%;
+    top: 33.3%;
+    right: 0%;
+    bottom: 0%;
+    display: block;
+    height: 66.7%;
   }
 }
 
@@ -867,6 +1058,10 @@
     display: none;
   }
 
+  .text-block-4 {
+    text-align: center;
+  }
+
   .swap_description_title {
     justify-content: center;
   }
@@ -876,7 +1071,7 @@
   }
 
   .swap_description_p2 {
-    display: none;
+    display: block;
   }
 
   .text-block-11 {
@@ -887,6 +1082,10 @@
   .text-block-12 {
     font-size: 16px;
     text-align: center;
+  }
+
+  .text-block-13 {
+    font-size: 16px;
   }
 
   .logo {
@@ -907,6 +1106,7 @@
     display: flex;
     margin-top: 28px;
     padding-right: 20px;
+    padding-bottom: 0px;
     padding-left: 20px;
   }
 
@@ -979,6 +1179,36 @@
   }
 
   .menu_show_hide {
+    display: none;
+  }
+
+  .send_coin_expand {
+    left: 25%;
+    top: 33.2%;
+    display: none;
+  }
+
+  .receive_coin_expand {
+    left: 25%;
+    top: 48.2%;
+    height: 51.8%;
+  }
+
+  .container_mobile {
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: auto;
+    display: block;
+    width: auto;
+    height: 100%;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .receiv_coin_expand {
+    left: 25%;
+    top: 32.3%;
     display: none;
   }
 }
@@ -1074,6 +1304,10 @@
     font-size: 14px;
   }
 
+  .text-block-13 {
+    font-size: 14px;
+  }
+
   .logo {
     width: 200px;
   }
@@ -1087,10 +1321,12 @@
   }
 
   .main_content_mobile {
+    position: relative;
     margin-top: 12px;
     padding-right: 10px;
+    padding-bottom: 33px;
     padding-left: 10px;
-	padding-bottom: 20px;
+    align-items: stretch;
   }
 
   .bold-text-2 {
@@ -1108,5 +1344,45 @@
   .menu_mobile_container {
     padding-right: 0px;
     padding-bottom: 20px;
+  }
+
+  .send_coin_expand {
+    left: 7.5%;
+    top: 23.5%;
+    display: none;
+    width: 85%;
+    height: 70.6%;
+  }
+
+  .receive_coin_expand {
+    left: 7.5%;
+    top: 42.5%;
+    display: none;
+    width: 85%;
+    height: 51.7%;
+  }
+
+  .container_mobile {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    display: block;
+    width: auto;
+    height: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 15px;
+    flex: 0 0 auto;
+    background-image: none;
+  }
+
+  .receiv_coin_expand {
+    left: 7.5%;
+    top: 23.5%;
+    display: none;
+    width: 85%;
+    height: 70.6%;
   }
 }

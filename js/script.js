@@ -201,22 +201,13 @@ const resizeCamera = () => {
   camera.aspect = resolution.x / resolution.y;
   camera.updateProjectionMatrix();
 };
-function getViewportHeight() {
-  let vh = window.innerHeight;
-  if (navigator.userAgent.indexOf('iPhone') !== -1 && navigator.userAgent.indexOf('Safari') !== -1) {
-    vh = window.screen.availHeight;
-  }
-  return vh;
-}
-
 const resizeWindow = () => {
-  resolution.set(window.innerWidth, getViewportHeight());
+  resolution.set(window.innerWidth, window.innerHeight);
   canvas.width = resolution.x;
   canvas.height = resolution.y;
   resizeCamera();
   renderer.setSize(resolution.x, resolution.y);
 };
-
 const on = () => {
   window.addEventListener('resize', debounce(resizeWindow), 1000);
 };
