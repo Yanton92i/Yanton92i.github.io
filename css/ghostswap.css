@@ -10,7 +10,7 @@
   opacity: 13%;
   mix-blend-mode: screen;
   pointer-events: none;
-  height:100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width:100%;
 }
 

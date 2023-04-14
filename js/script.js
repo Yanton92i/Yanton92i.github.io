@@ -201,13 +201,31 @@ const resizeCamera = () => {
   camera.aspect = resolution.x / resolution.y;
   camera.updateProjectionMatrix();
 };
+function getViewportHeight() {
+  let vh = window.innerHeight;
+  if (navigator.userAgent.indexOf('iPhone') !== -1 && navigator.userAgent.indexOf('Safari') !== -1) {
+    vh = window.screen.availHeight;
+  }
+  return vh;
+}
+
 const resizeWindow = () => {
-  resolution.set(window.innerWidth, window.innerHeight);
+  resolution.set(window.innerWidth, getViewportHeight());
   canvas.width = resolution.x;
   canvas.height = resolution.y;
   resizeCamera();
   renderer.setSize(resolution.x, resolution.y);
 };
+
+function updateViewportHeightCSSVar() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', updateViewportHeightCSSVar);
+updateViewportHeightCSSVar();
+
+
 const on = () => {
   window.addEventListener('resize', debounce(resizeWindow), 1000);
 };
