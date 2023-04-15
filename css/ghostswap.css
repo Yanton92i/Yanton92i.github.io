@@ -605,6 +605,16 @@
   background-color: transparent;
 }
 
+.refresh_button_custom:hover {
+  cursor: pointer;
+}
+
+.refresh_icon_custom {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  transform-origin: center !important;
+}
+
 .refresh_icon_custom {
   transition: all 0.3s ease;
   filter: brightness(100%);
