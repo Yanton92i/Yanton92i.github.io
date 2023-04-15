@@ -364,11 +364,10 @@
 }
 
 .placeholder {
-  margin-right: 10px;
+  margin-left: 15px;
   font-family: 'Open Sans', sans-serif;
-  color: #fff;
-  font-weight: 400;
-  text-align: right;
+  color: #b7feeb;
+  font-size: 16px;
 }
 
 .swap_input {
