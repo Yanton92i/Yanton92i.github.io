@@ -1016,8 +1016,25 @@
     display: none;
     height: 66.7%;
   }
+  
+  .send_coin_expand_mobile {
+    position: absolute;
+    left: 45%;
+    top: 33.3%;
+    right: 0%;
+    bottom: 0%;
+    display: none;
+    height: 66.7%;
+  }
 
   .receive_coin_expand {
+    left: 45%;
+    top: 49.3%;
+    display: block;
+    height: 50.7%;
+  }
+  
+  .receive_coin_expand_mobile {
     left: 45%;
     top: 49.3%;
     display: block;
@@ -1200,7 +1217,19 @@
     display: none;
   }
 
+  .send_coin_expand_mobile {
+    left: 25%;
+    top: 33.2%;
+    display: none;
+  }
+
   .receive_coin_expand {
+    left: 25%;
+    top: 48.2%;
+    height: 51.8%;
+  }
+  
+  .receive_coin_expand_mobile {
     left: 25%;
     top: 48.2%;
     height: 51.8%;
@@ -1367,6 +1396,14 @@
   }
 
   .receive_coin_expand {
+    left: 7.5%;
+    top: 42.5%;
+    display: none;
+    width: 85%;
+    height: 51.7%;
+  }
+  
+  .receive_coin_expand_mobile {
     left: 7.5%;
     top: 42.5%;
     display: none;
