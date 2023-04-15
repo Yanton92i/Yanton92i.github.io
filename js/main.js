@@ -24,16 +24,20 @@ $(document).ready(function () {
     }
   }
   
-  $(document).ready(function () {
-  $(".refresh_button_custom").on("click", function () {
+$(document).ready(function () {
+  function handleClick() {
     const refreshIcon = $(this).find(".refresh_icon_custom");
     refreshIcon.addClass("animate-pulse");
 
     setTimeout(() => {
       refreshIcon.removeClass("animate-pulse");
     }, 1000);
-  });
+  }
+
+  $(".refresh_button_custom").on("click", handleClick);
+  $(".refresh_button_custom").on("touchstart", handleClick);
 });
+
 
  
 // Add click event listener to .search_currency
