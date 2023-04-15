@@ -2,6 +2,10 @@
   background-color: #000;
 }
 
+.show {
+  display: block !important;
+}
+
 .p-canvas-webgl {
   position: fixed;
   z-index: 9000;
