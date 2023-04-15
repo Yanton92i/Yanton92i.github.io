@@ -23,22 +23,110 @@ $(document).ready(function () {
       }
     }
   }
+  
+  $(document).ready(function () {
+  $(".refresh_button_custom").on("click", function () {
+    const refreshIcon = $(this).find(".refresh_icon_custom");
+    refreshIcon.addClass("animate-pulse");
 
-  $(".coin_placeholder").on("click", function () {
-    const isMobile = window.innerWidth <= 991;
-    const isSend = $(this).closest(".send_coin_expand, .send_coin_expand_mobile").length > 0;
-    const coinName = $(this).find(".coin_name").text();
+    setTimeout(() => {
+      refreshIcon.removeClass("animate-pulse");
+    }, 1000);
+  });
+});
 
-    let targetPlaceholder;
+ 
+// Add click event listener to .search_currency
+$('.search_currency_send .text-block-15').on('input', function() {
+  const searchText = $(this).text().toLowerCase();
 
-    if (isSend) {
-      targetPlaceholder = isMobile ? $(".swap_right .coin_selector_arrow_mobile + .coin_placeholder .placeholder") : $(".swap_right .coin_selector_arrow + .coin_placeholder .placeholder");
-    } else {
-      targetPlaceholder = isMobile ? $(".swap_receive_right .coin_selector_arrow_mobile + .coin_placeholder .placeholder") : $(".swap_receive_right .coin_selector_arrow + .coin_placeholder .placeholder");
-    }
+  $('.send_coin_expand .coin_name_send').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return coinName.includes(searchText);
+  }).closest('.coin_placeholder').show();
 
-    targetPlaceholder.text(coinName);
+  $('.send_coin_expand .coin_name_send').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return !coinName.includes(searchText);
+  }).closest('.coin_placeholder').hide();
+});
+ 
+// Add click event listener to .search_currency
+$('.search_currency_receive .text-block-15').on('input', function() {
+  const searchText = $(this).text().toLowerCase();
+
+  $('.receive_coin_expand .coin_name_receive').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return coinName.includes(searchText);
+  }).closest('.coin_placeholder_receive').show();
+
+  $('.receive_coin_expand .coin_name_receive').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return !coinName.includes(searchText);
+  }).closest('.coin_placeholder_receive').hide();
+});
+
+// Add click event listener to .search_currency
+$('.search_currency_send_mobile .text-block-15').on('input', function() {
+  const searchText = $(this).text().toLowerCase();
+
+  $('.send_coin_expand_mobile .coin_name_send_mobile').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return coinName.includes(searchText);
+  }).closest('.coin_placeholder_mobile').show();
+
+  $('.send_coin_expand_mobile .coin_name_send_mobile').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return !coinName.includes(searchText);
+  }).closest('.coin_placeholder_mobile').hide();
+});
+ 
+// Add click event listener to .search_currency
+$('.search_currency_receive_mobile .text-block-15').on('input', function() {
+  const searchText = $(this).text().toLowerCase();
+
+  $('.receive_coin_expand_mobile .coin_name_receive_mobile').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return coinName.includes(searchText);
+  }).closest('.coin_placeholder_receive_mobile').show();
+
+  $('.receive_coin_expand_mobile .coin_name_receive_mobile').filter(function() {
+    const coinName = $(this).text().toLowerCase();
+    return !coinName.includes(searchText);
+  }).closest('.coin_placeholder_receive_mobile').hide();
+});
+
+
+
+  // Add click event listener to .coin_placeholder
+  $(".coin_placeholder").on("click", function() {
+	$("div.placeholder_send").replaceWith($("div.coin_name_send").clone());
+	$("div.coin_first").replaceWith($("div.coin").clone());
+	$(".send_coin_expand").removeClass("show");
+  });
+  
+  
+  // Add click event listener to .coin_placeholder
+  $(".coin_placeholder_receive").on("click", function() {
+	$("div.placeholder_receive").replaceWith($("div.coin_name_receive").clone());
+	$("div.coin_first_receive").replaceWith($("div.coin_receive").clone());
+	$(".receive_coin_expand").removeClass("show");
+  });
+  
+  // Add click event listener to .coin_placeholder
+  $(".coin_placeholder_mobile").on("click", function() {
+	$("div.placeholder_send_mobile").replaceWith($("div.coin_name_send_mobile").clone());
+	$("div.coin_first_mobile").replaceWith($("div.coin_mobile").clone());
+	$(".send_coin_expand_mobile").removeClass("show");
+  });
+  
+  // Add click event listener to .coin_placeholder
+  $(".coin_placeholder_receive_mobile").on("click", function() {
+	$("div.placeholder_receive_mobile").replaceWith($("div.coin_name_receive_mobile").clone());
+	$("div.coin_first_receive_mobile").replaceWith($("div.coin_receive_mobile").clone());
+	$(".receive_coin_expand_mobile").removeClass("show");
   });
 
+  // Add click event listener to the arrow elements
   $(".swap_right .coin_selector_arrow, .swap_receive_right .coin_selector_arrow, .swap_right .coin_selector_arrow_mobile, .swap_receive_right .coin_selector_arrow_mobile").on("click", handleArrowClick);
 });
