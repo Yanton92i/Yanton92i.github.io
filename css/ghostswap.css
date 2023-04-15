@@ -871,6 +871,26 @@
   opacity: 1;
 }
 
+.send_coin_expand_mobile {
+  position: absolute;
+  left: 45%;
+  top: 33.3%;
+  right: 0%;
+  bottom: auto;
+  z-index: 2500;
+  display: none;
+  overflow: auto;
+  width: 50%;
+  height: 66.7%;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  border-radius: 9px;
+  background-color: #000807;
+  opacity: 1;
+  diplay: none;
+}
+
 .coin_container {
   display: flex;
   height: 55px;
@@ -940,6 +960,26 @@
   border-radius: 9px;
   background-color: #000807;
   opacity: 1;
+}
+
+.receive_coin_expand_mobile {
+  position: absolute;
+  left: 45%;
+  top: 49.3%;
+  right: 0%;
+  bottom: auto;
+  z-index: 2500;
+  display: none;
+  overflow: auto;
+  width: 50%;
+  height: 50.7%;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  border-radius: 9px;
+  background-color: #000807;
+  opacity: 1;
+  display: none;
 }
 
 .container_mobile {
@@ -1038,8 +1078,25 @@
     display: none;
     height: 66.7%;
   }
+  
+    .send_coin_expand_mobile {
+    position: absolute;
+    left: 45%;
+    top: 33.3%;
+    right: 0%;
+    bottom: 0%;
+    display: none;
+    height: 66.7%;
+  }
 
   .receive_coin_expand {
+    left: 45%;
+    top: 49.3%;
+    display: block;
+    height: 50.7%;
+  }
+
+  .receive_coin_expand_mobile {
     left: 45%;
     top: 49.3%;
     display: block;
@@ -1221,8 +1278,20 @@
     top: 33.2%;
     display: none;
   }
+  
+    .send_coin_expand_mobile {
+    left: 25%;
+    top: 33.2%;
+    display: none;
+  }
 
   .receive_coin_expand {
+    left: 25%;
+    top: 48.2%;
+    height: 51.8%;
+  }
+  
+  .receive_coin_expand_mobile {
     left: 25%;
     top: 48.2%;
     height: 51.8%;
@@ -1387,8 +1456,24 @@
     width: 85%;
     height: 70.6%;
   }
+  
+   .send_coin_expand_mobile {
+    left: 7.5%;
+    top: 23.5%;
+    display: none;
+    width: 85%;
+    height: 70.6%;
+  }
 
   .receive_coin_expand {
+    left: 7.5%;
+    top: 42.5%;
+    display: none;
+    width: 85%;
+    height: 51.7%;
+  }
+  
+    .receive_coin_expand_mobile {
     left: 7.5%;
     top: 42.5%;
     display: none;

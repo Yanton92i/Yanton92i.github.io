@@ -1,19 +1,28 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const sendExpand = document.querySelector('.send_coin_expand');
-  const receiveExpand = document.querySelector('.receive_coin_expand');
+$(document).ready(function () {
+  const sendExpandDesktop = $(".send_coin_expand");
+  const sendExpandMobile = $(".send_coin_expand_mobile");
+  const receiveExpandDesktop = $(".receive_coin_expand");
+  const receiveExpandMobile = $(".receive_coin_expand_mobile");
 
-  function toggleExpand(el) {
-    el.classList.toggle('show');
+  function handleArrowClick(event) {
+    const target = $(event.target);
+    const isMobile = window.innerWidth <= 991;
+    const isSend = target.closest(".swap_right").length > 0;
+
+    if (isSend) {
+      if (isMobile) {
+        sendExpandMobile.toggleClass("show");
+      } else {
+        sendExpandDesktop.toggleClass("show");
+      }
+    } else {
+      if (isMobile) {
+        receiveExpandMobile.toggleClass("show");
+      } else {
+        receiveExpandDesktop.toggleClass("show");
+      }
+    }
   }
 
-  function handleClick(selector, target) {
-    document.querySelector(selector).addEventListener('click', function () {
-      toggleExpand(target);
-    });
-  }
-
-  handleClick('.swap_right .coin_selector_arrow', sendExpand);
-  handleClick('.swap_receive_right .coin_selector_arrow', receiveExpand);
-  handleClick('.swap_right .coin_selector_arrow_mobile', sendExpand);
-  handleClick('.swap_receive_right .coin_selector_arrow_mobile', receiveExpand);
+  $(".swap_right .coin_selector_arrow, .swap_receive_right .coin_selector_arrow, .swap_right .coin_selector_arrow_mobile, .swap_receive_right .coin_selector_arrow_mobile").on("click", handleArrowClick);
 });
