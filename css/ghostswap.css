@@ -607,10 +607,11 @@
 
 .refresh_icon_custom {
   transition: all 0.3s ease;
+  filter: brightness(100%);
 }
 
 .refresh_button_custom:hover .refresh_icon_custom {
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+  filter: brightness(300%);
 }
 
 .refresh_icon_custom.animate-pulse {
@@ -628,6 +629,7 @@
     transform: scale(1);
   }
 }
+
 
 
 .swap_h1 {
