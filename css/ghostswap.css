@@ -359,6 +359,14 @@
   text-align: right;
 }
 
+.placeholder {
+  margin-right: 10px;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-weight: 400;
+  text-align: right;
+}
+
 .swap_input {
   display: inline-block;
   color: #387167;
