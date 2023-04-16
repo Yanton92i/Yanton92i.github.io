@@ -130,6 +130,51 @@ $('.search_currency_receive_mobile .text-block-15').on('input', function() {
 	$("div.coin_first_receive_mobile").replaceWith($("div.coin_receive_mobile").clone());
 	$(".receive_coin_expand_mobile").removeClass("show");
   });
+  
+$(".swap_button").off("click").on("click", function () {
+  var coinNameSend = $(".swap_right .coin_name_send");
+  var coinNameReceive = $(".swap_receive_right .coin_name_receive");
+
+  var coinNameSendMobile = $(".swap_right .coin_name_send_mobile");
+  var coinNameReceiveMobile = $(".swap_receive_right .coin_name_receive_mobile");
+
+  // Get the coin image elements
+  var coinImageSend = $(".swap_right .coin .coin_image:not(.coin_first):not(.coin_first_mobile)");
+  var coinImageReceive = $(".swap_receive_right .coin_receive .coin_image:not(.coin_first_receive):not(.coin_first_receive_mobile)");
+
+  // Get the mobile coin image elements
+  var coinImageSendMobile = $(".swap_right .coin_mobile .coin_image:not(.coin_first):not(.coin_first_receive)");
+  var coinImageReceiveMobile = $(".swap_receive_right .coin_receive_mobile .coin_image:not(.coin_first_mobile):not(.coin_first_receive_mobile)");
+
+  var tempCoinName = coinNameSend.text();
+  coinNameSend.text(coinNameReceive.text());
+  coinNameReceive.text(tempCoinName);
+
+  // Swap mobile coin names
+  var tempCoinNameMobile = coinNameSendMobile.text();
+  coinNameSendMobile.text(coinNameReceiveMobile.text());
+  coinNameReceiveMobile.text(tempCoinNameMobile);
+
+  // Swap the image sources and alt attributes
+  var tempCoinImageSrc = coinImageSend.attr("src");
+  var tempCoinImageAlt = coinImageSend.attr("alt");
+  coinImageSend.attr("src", coinImageReceive.attr("src"));
+  coinImageSend.attr("alt", coinImageReceive.attr("alt"));
+  coinImageReceive.attr("src", tempCoinImageSrc);
+  coinImageReceive.attr("alt", tempCoinImageAlt);
+
+  // Swap the mobile image sources and alt attributes
+  var tempCoinImageSrcMobile = coinImageSendMobile.attr("src");
+  var tempCoinImageAltMobile = coinImageSendMobile.attr("alt");
+  coinImageSendMobile.attr("src", coinImageReceiveMobile.attr("src"));
+  coinImageSendMobile.attr("alt", coinImageReceiveMobile.attr("alt"));
+  coinImageReceiveMobile.attr("src", tempCoinImageSrcMobile);
+  coinImageReceiveMobile.attr("alt", tempCoinImageAltMobile);
+});
+
+
+
+
 
   // Add click event listener to the arrow elements
   $(".swap_right .coin_selector_arrow, .swap_receive_right .coin_selector_arrow, .swap_right .coin_selector_arrow_mobile, .swap_receive_right .coin_selector_arrow_mobile").on("click", handleArrowClick);
