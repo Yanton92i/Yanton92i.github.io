@@ -98,8 +98,8 @@
   let correctAnswer = "pepper"; // Correct answer
   let guessNumber = 0; // Number of guesses
 
-  function submitGuess() {
-    const guess = document.querySelector('.text-block').innerHTML; // User's guess
+function submitGuess() {
+    const guess = document.querySelector('.text-block').value; // User's guess
     const distance = levenshteinDistance(correctAnswer, guess); // Distance score
     const similarity = 1 - (distance / Math.max(correctAnswer.length, guess.length)); // Similarity score
 
@@ -117,10 +117,18 @@
     // Increase guessNumber
     guessNumber++;
 
-    // Append to answers div
-    const answersDiv = document.querySelector('.answers');
-    answersDiv.innerHTML += `<div>#${guessNumber} ${guess} - Similarity: ${similarity.toFixed(2)} - ${proximity}</div>`;
+    // Update answers div
+    const numberDiv = document.querySelector('.number .text_answer');
+    const guessDiv = document.querySelector('.guess .text_answer');
+    const similarityDiv = document.querySelector('.similarity .text_answer');
+    const closeDiv = document.querySelector('.close .text_answer');
+
+    numberDiv.textContent = guessNumber;
+    guessDiv.textContent = guess;
+    similarityDiv.textContent = similarity.toFixed(2);
+    closeDiv.textContent = proximity;
   }
+
 
   // Add event listener to your submit button
   document.querySelector('.send_button').addEventListener('click', submitGuess);
