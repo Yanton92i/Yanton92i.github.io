@@ -99,7 +99,13 @@
   let guessNumber = 0; // Number of guesses
 
 function submitGuess() {
-    const guess = document.querySelector('.text-block').value; // User's guess
+    const guessInput = document.querySelector('.text-block');
+    if (!guessInput || !guessInput.value) {
+      // If the guess input is undefined or empty, don't do anything
+      return;
+    }
+    
+    const guess = guessInput.value; // User's guess
     const distance = levenshteinDistance(correctAnswer, guess); // Distance score
     const similarity = 1 - (distance / Math.max(correctAnswer.length, guess.length)); // Similarity score
 
@@ -127,12 +133,13 @@ function submitGuess() {
     guessDiv.textContent = guess;
     similarityDiv.textContent = similarity.toFixed(2);
     closeDiv.textContent = proximity;
-  }
+}
 
 
   // Add event listener to your submit button
   document.querySelector('.send_button').addEventListener('click', submitGuess);
 </script>
+
 
 
 
