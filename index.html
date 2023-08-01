@@ -49,16 +49,16 @@
         <div class="separator"></div>
         <div class="answers">
           <div class="number">
-            <div class="text_answer">1</div>
+            <div class="text_answer">0</div>
           </div>
           <div class="guess">
-            <div class="text_answer">Pepper</div>
+            <div class="text_answer">Word</div>
           </div>
           <div class="similarity">
-            <div class="text_answer">5.92</div>
+            <div class="text_answer">Points</div>
           </div>
           <div class="close">
-            <div class="text_answer">cold</div>
+            <div class="text_answer">Shish</div>
           </div>
         </div>
       </div>
@@ -99,47 +99,66 @@
   let guessNumber = 0; // Number of guesses
 
 function submitGuess() {
-    const guessInput = document.querySelector('.text-block');
-    if (!guessInput || !guessInput.value) {
-      // If the guess input is undefined or empty, don't do anything
-      return;
-    }
-    
-    const guess = guessInput.value; // User's guess
+    const guess = document.querySelector('.text-block').textContent; // User's guess
     const distance = levenshteinDistance(correctAnswer, guess); // Distance score
     const similarity = 1 - (distance / Math.max(correctAnswer.length, guess.length)); // Similarity score
 
     let proximity; // To store how close the guess was
+    let color; // To store the color
     if (similarity > 0.8) {
       proximity = "Hot";
+      color = "#ff7d00";
     } else if (similarity > 0.5) {
       proximity = "Warm";
+      color = "#ffd4a4";
     } else if (similarity > 0.2) {
       proximity = "Cold";
+      color = "#a4daff";
     } else {
       proximity = "Ice Cold";
+      color = "#ffffff";
     }
 
     // Increase guessNumber
     guessNumber++;
 
-    // Update answers div
-    const numberDiv = document.querySelector('.number .text_answer');
-    const guessDiv = document.querySelector('.guess .text_answer');
-    const similarityDiv = document.querySelector('.similarity .text_answer');
-    const closeDiv = document.querySelector('.close .text_answer');
+    let newAnswer;
+    if (guessNumber == 1) {
+      // Replace existing 'answers' div for the first guess
+      newAnswer = document.querySelector('.answers');
+    } else {
+      // Clone 'answers' div for subsequent guesses
+      newAnswer = document.querySelector('.answers').cloneNode(true);
+    }
+    
+    // Update text of 'answers' div
+    const numberDiv = newAnswer.querySelector('.number .text_answer');
+    const guessDiv = newAnswer.querySelector('.guess .text_answer');
+    const similarityDiv = newAnswer.querySelector('.similarity .text_answer');
+    const closeDiv = newAnswer.querySelector('.close .text_answer');
 
     numberDiv.textContent = guessNumber;
     guessDiv.textContent = guess;
     similarityDiv.textContent = similarity.toFixed(2);
     closeDiv.textContent = proximity;
-}
+
+    // Set text color of individual text_answer divs based on proximity
+    numberDiv.style.color = color;
+    guessDiv.style.color = color;
+    similarityDiv.style.color = color;
+    closeDiv.style.color = color;
+
+    // For subsequent guesses, insert the new 'answers' div at the top
+    if (guessNumber > 1) {
+      const blockAnswers = document.querySelector('.block_answers');
+      blockAnswers.insertBefore(newAnswer, blockAnswers.children[2]);
+    }
+  }
 
 
   // Add event listener to your submit button
   document.querySelector('.send_button').addEventListener('click', submitGuess);
 </script>
-
 
 
 
