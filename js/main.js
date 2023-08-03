@@ -9,9 +9,12 @@ window.addEventListener('load', async () => {
 
     const connectButton = document.querySelector('.connect');
     const guessButton = document.querySelector('.send_button');
+    const buyPsykoDiv = document.querySelector('.buy_psyko');
 
     // Make guess button unclickable at the start
     guessButton.style.pointerEvents = 'none';
+    // Hide the buy_psyko div at the start
+    buyPsykoDiv.style.display = 'none';
 
     // Wait for user to click the connect button
     connectButton.addEventListener('click', async () => {
@@ -23,10 +26,10 @@ window.addEventListener('load', async () => {
         // Change the button text to show the wallet address
         connectButton.textContent = account.slice(0, 2) + '...' + account.slice(-3);
 
-        if (parseFloat(balanceEth) >= 0.0010) {
-            guessButton.style.pointerEvents = 'auto';
+        if (parseFloat(balanceEth) < 0.0010) {
+            buyPsykoDiv.style.display = 'block';
         } else {
-            guessButton.style.pointerEvents = 'none';
+            guessButton.style.pointerEvents = 'auto';
         }
     });
 });
