@@ -17,7 +17,7 @@ window.addEventListener('load', async () => {
   const connectButton = document.querySelector('.connect');
   const guessButton = document.querySelector('.send_button');
 
-  connectButton.addEventListener('click', async () => {
+connectButton.addEventListener('click', async () => {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     const account = accounts[0];
     const balanceWei = await web3.eth.getBalance(account);
@@ -28,7 +28,11 @@ window.addEventListener('load', async () => {
     } else {
       guessButton.style.pointerEvents = 'none';
     }
+
+    // Change the button text to show the wallet address
+    connectButton.textContent = account.slice(0, 6) + '...' + account.slice(-4);
   });
+
 
   guessButton.style.pointerEvents = 'none';
 });
