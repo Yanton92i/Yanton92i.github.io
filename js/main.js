@@ -10,27 +10,24 @@ window.addEventListener('load', async () => {
     const connectButton = document.querySelector('.connect');
     const guessButton = document.querySelector('.send_button');
     const buyPsykoDiv = document.querySelector('.buy_psyko');
-    const closeButton = document.querySelector('.close_button');
 
     // Make guess button unclickable at the start
     guessButton.style.pointerEvents = 'none';
-    guessButton.style.cursor = 'not-allowed';
 
+    // Wait for user to click the connect button
     connectButton.addEventListener('click', async () => {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         const account = accounts[0];
         const balanceWei = await web3.eth.getBalance(account);
         const balanceEth = web3.utils.fromWei(balanceWei, 'ether');
 
+        // Change the button text to show the wallet address
         connectButton.textContent = account.slice(0, 2) + '...' + account.slice(-3);
 
-        if (parseFloat(balanceEth) >= 0.0010) {
-            guessButton.style.pointerEvents = 'auto';
-            guessButton.style.cursor = 'pointer';
-        } else {
-            guessButton.style.pointerEvents = 'none';
-            guessButton.style.cursor = 'not-allowed';
+        if (parseFloat(balanceEth) < 0.0010) {
             buyPsykoDiv.style.display = 'flex';
+        } else {
+            guessButton.style.pointerEvents = 'auto';
         }
     });
 });
