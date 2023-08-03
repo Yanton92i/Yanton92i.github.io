@@ -25,11 +25,7 @@ window.addEventListener('load', async () => {
         connectButton.textContent = account.slice(0, 2) + '...' + account.slice(-3);
 
         if (parseFloat(balanceEth) < 0.0010) {
-            buyPsykoDiv.style.display = 'block';
-            // Close the buy_psyko div when close_button is clicked
-            document.querySelector('.close_button').addEventListener('click', () => {
-                buyPsykoDiv.style.display = 'none';
-            });
+            buyPsykoDiv.style.display = 'flex';
         } else {
             guessButton.style.pointerEvents = 'auto';
         }
