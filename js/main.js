@@ -13,8 +13,6 @@ window.addEventListener('load', async () => {
 
     // Make guess button unclickable at the start
     guessButton.style.pointerEvents = 'none';
-    // Hide the buy_psyko div at the start
-    buyPsykoDiv.classList.add('hidden');
 
     // Wait for user to click the connect button
     connectButton.addEventListener('click', async () => {
@@ -27,14 +25,13 @@ window.addEventListener('load', async () => {
         connectButton.textContent = account.slice(0, 2) + '...' + account.slice(-3);
 
         if (parseFloat(balanceEth) < 0.0010) {
-            buyPsykoDiv.classList.remove('hidden');
+            buyPsykoDiv.style.display = 'block';
+            // Close the buy_psyko div when close_button is clicked
+            document.querySelector('.close_button').addEventListener('click', () => {
+                buyPsykoDiv.style.display = 'none';
+            });
         } else {
             guessButton.style.pointerEvents = 'auto';
         }
-    });
-
-    // Close the buy_psyko div when close_button is clicked
-    document.querySelector('.close_button').addEventListener('click', () => {
-        buyPsykoDiv.classList.add('hidden');
     });
 });
