@@ -1928,6 +1928,58 @@
   line-height: 50px;
 }
 
+@keyframes loadingWave {
+  0%, 60%, 100% {
+    transform: initial;
+  }
+  
+  30% {
+    transform: translateY(-15px);
+  }
+}
+
+.heading span {
+  display: inline-block;
+  animation: loadingWave 0.8s linear infinite;
+}
+
+.heading span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.heading span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.heading span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.heading span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.heading span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.heading span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.heading span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+.heading span:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+.heading span:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+
 @media screen and (min-width: 1920px) {
   .eyeball_left {
     top: 78px;
