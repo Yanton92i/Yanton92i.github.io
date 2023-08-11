@@ -1,9 +1,10 @@
 const spinButton = document.querySelector('.loot_button');
 let whitelistSpots = 150; // Initial number of whitelist spots
 let hasSpun = false; // You will need to replace this with logic that checks if the user's wallet has already spun
+let canSpin = false; // New variable to determine if spinning is allowed
 
 function updateCountdown() {
-  const eventTime = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate(), 2, 45, 0);
+  const eventTime = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate(), 3, 0, 0);
   const currentTime = Date.now();
   const diff = eventTime - currentTime;
 
@@ -11,6 +12,7 @@ function updateCountdown() {
     clearInterval(countdownInterval);
     spinButton.textContent = "Spin";
     if (!hasSpun) {
+      canSpin = true; // Enable spinning
       spinButton.style.pointerEvents = 'auto';
       spinButton.style.cursor = 'pointer';
     }
@@ -32,6 +34,7 @@ spinButton.style.pointerEvents = 'none';
 spinButton.style.cursor = 'not-allowed';
 
 spinButton.addEventListener('click', function() {
+  if (!canSpin || hasSpun) return; // Check if spinning is allowed
   if (hasSpun) return;
 
   // Adjust the probability for the whitelist spots
