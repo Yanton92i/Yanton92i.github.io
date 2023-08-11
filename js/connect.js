@@ -20,11 +20,9 @@ async function checkBalance(account) {
   const spinButton = document.querySelector('.loot_button');
 
   if (parseFloat(balanceEth) >= 0.001) {
-    spinButton.style.pointerEvents = 'auto';
-    spinButton.style.opacity = '1';
+    spinButton.classList.remove('disabled-button');
   } else {
-    spinButton.style.pointerEvents = 'none';
-    spinButton.style.opacity = '0.5';
+    spinButton.classList.add('disabled-button');
   }
 }
 
