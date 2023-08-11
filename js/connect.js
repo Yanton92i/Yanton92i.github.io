@@ -7,6 +7,7 @@ window.addEventListener('load', async () => {
 
   const connectButton = document.querySelector('.button_wallet');
   const spinButton = document.querySelector('.loot_button');
+  const popupRulesDiv = document.querySelector('.popup_rules'); // Select the popup div
 
   function disableSpinButton() {
     spinButton.style.pointerEvents = 'none';
@@ -26,12 +27,15 @@ window.addEventListener('load', async () => {
 
     if (parseFloat(balanceEth) < 0.0010) {
       disableSpinButton();
+      popupRulesDiv.style.display = 'flex'; // Show the popup
     } else {
       enableSpinButton();
+      popupRulesDiv.style.display = 'none'; // Hide the popup
     }
   }
 
   disableSpinButton();
+  popupRulesDiv.style.display = 'none'; // Ensure popup is hidden initially
 
   connectButton.addEventListener('click', async () => {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
