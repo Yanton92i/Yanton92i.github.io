@@ -1,28 +1,30 @@
-async function connectWallet() {
+window.addEventListener('load', async () => {
   if (window.ethereum) {
-    window.web3 = new Web3(window.ethereum);
-    try {
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-      checkBalance();
-    } catch (error) {
-      console.error("User denied account access");
-    }
+    window.web3 = new Web3(ethereum);
   } else {
     console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
   }
-}
 
-async function checkBalance() {
-  const accounts = await window.web3.eth.getAccounts();
-  const balanceWei = await window.web3.eth.getBalance(accounts[0]);
-  const balanceEth = window.web3.utils.fromWei(balanceWei, 'ether');
-  const spinButton = document.getElementById('spin-button');
+  const connectButton = document.querySelector('.button_wallet');
+  const spinButton = document.querySelector('.loot_button');
 
-  if (parseFloat(balanceEth) >= 0.001) {
-    spinButton.classList.remove('disabled-button');
-  } else {
-    spinButton.classList.add('disabled-button');
-  }
-}
+  // Make spin button unclickable at the start
+  spinButton.style.pointerEvents = 'none';
+  spinButton.style.cursor = 'not-allowed';
 
-document.querySelector('.button_wallet').addEventListener('click', connectWallet);
+  // Wait for user to click the connect button
+  connectButton.addEventListener('click', async () => {
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+    const account = accounts[0];
+    const balanceWei = await web3.eth.getBalance(account);
+    const balanceEth = web3.utils.fromWei(balanceWei, 'ether');
+
+    if (parseFloat(balanceEth) < 0.0010) {
+      spinButton.style.pointerEvents = 'none';
+      spinButton.style.cursor = 'not-allowed';
+    } else {
+      spinButton.style.pointerEvents = 'auto';
+      spinButton.style.cursor = 'pointer';
+    }
+  });
+});
