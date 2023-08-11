@@ -8,9 +8,20 @@ window.addEventListener('load', async () => {
   const connectButton = document.querySelector('.button_wallet');
   const spinButton = document.querySelector('.loot_button');
 
-  // Make spin button unclickable at the start
-  spinButton.style.pointerEvents = 'none';
-  spinButton.style.cursor = 'not-allowed';
+  // Function to disable the spin button
+  function disableSpinButton() {
+    spinButton.style.pointerEvents = 'none';
+    spinButton.style.cursor = 'not-allowed';
+  }
+
+  // Function to enable the spin button
+  function enableSpinButton() {
+    spinButton.style.pointerEvents = 'auto';
+    spinButton.style.cursor = 'pointer';
+  }
+
+  // Disable the spin button at the start
+  disableSpinButton();
 
   // Wait for user to click the connect button
   connectButton.addEventListener('click', async () => {
@@ -20,11 +31,9 @@ window.addEventListener('load', async () => {
     const balanceEth = web3.utils.fromWei(balanceWei, 'ether');
 
     if (parseFloat(balanceEth) < 0.0010) {
-      spinButton.style.pointerEvents = 'none';
-      spinButton.style.cursor = 'not-allowed';
+      disableSpinButton();
     } else {
-      spinButton.style.pointerEvents = 'auto';
-      spinButton.style.cursor = 'pointer';
+      enableSpinButton();
     }
   });
 });
