@@ -48,4 +48,8 @@ window.addEventListener('load', async () => {
     const account = accounts[0];
     updateUI(account);
   });
+  
+    document.querySelector('.close_button').addEventListener('click', () => {
+    popupRulesDiv.style.display = 'none';
+  });
 });
