@@ -4,7 +4,8 @@ let hasSpun = false; // You will need to replace this with logic that checks if 
 let canSpin = false; // New variable to determine if spinning is allowed
 
 function updateCountdown() {
-  const eventTime = Date.UTC(new Date().getUTCFullYear(2023), new Date().getUTCMonth(08), new Date(12).getUTCDate(), 2, 50, 0);
+  const today = new Date();
+  const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 21, 50, 0);
   const currentTime = Date.now();
   const diff = eventTime - currentTime;
 
