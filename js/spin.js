@@ -5,7 +5,7 @@ let canSpin = false; // New variable to determine if spinning is allowed
 
 function updateCountdown() {
   const today = new Date();
-  const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 2, 57, 0);
+  const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 3, 01, 0);
   const currentTime = Date.now();
   const diff = eventTime - currentTime;
 
@@ -55,6 +55,7 @@ spinButton.addEventListener('click', function() {
     document.querySelector('.spots').textContent = whitelistSpots; // Update the displayed number of spots
   } else {
     spinButton.textContent = "Nothing Found";
+    return; // If "Nothing Found," exit the function early, keeping the spin button active
   }
 
   if (result) {
