@@ -5,7 +5,7 @@ let canSpin = false; // New variable to determine if spinning is allowed
 
 function updateCountdown() {
   const today = new Date();
-  const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 2, 50, 0);
+  const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 2, 57, 0);
   const currentTime = Date.now();
   const diff = eventTime - currentTime;
 
@@ -36,7 +36,6 @@ spinButton.style.cursor = 'not-allowed';
 
 spinButton.addEventListener('click', function() {
   if (!canSpin || hasSpun) return; // Check if spinning is allowed
-  if (hasSpun) return;
 
   // Adjust the probability for the whitelist spots
   let whitelistProbability = (whitelistSpots / 150) * 49.7;
@@ -63,6 +62,7 @@ spinButton.addEventListener('click', function() {
   }
 
   hasSpun = true; // You should replace this with logic that records that the user's wallet has spun
+  spinButton.textContent = "No More Try"; // Change the button text
   spinButton.style.pointerEvents = 'none';
   spinButton.style.cursor = 'not-allowed';
 });
