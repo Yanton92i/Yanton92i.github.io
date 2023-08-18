@@ -842,6 +842,8 @@
   .wheel_base {
     width: 600px;
     height: 600px;
+	z-index: 30;
+    position: relative;
   }
 
   .side_block {
