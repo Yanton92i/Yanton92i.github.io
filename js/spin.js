@@ -5,6 +5,16 @@ let canSpin = false;
 
 const wheelBaseImage = document.querySelector('.wheel_base');
 
+// Sound effects
+const soundSpin = new Audio('../sfx/spin.mp3');
+const soundWin = new Audio('../sfx/win.mp3');
+const soundFail = new Audio('../sfx/fail.mp3');
+
+function playSound(effect) {
+    effect.currentTime = 0; // Reset the audio play time
+    effect.play();
+}
+
 function updateCountdown() {
     const today = new Date();
     const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 03, 09, 0);
@@ -38,6 +48,8 @@ spinButton.style.cursor = 'not-allowed';
 spinButton.addEventListener('click', function () {
     if (!canSpin || hasSpun) return;
 
+    playSound(soundSpin); // Play the spinning sound
+
     let randomValue = Math.random() * 100;
     let result;
     let resultRotation;
@@ -64,11 +76,12 @@ spinButton.addEventListener('click', function () {
     wheelBaseImage.style.transition = "transform 2s ease-out"; 
     wheelBaseImage.style.transform = `rotate(${resultRotation}deg)`;
 
-console.log("About to set timeout for popup display");
     setTimeout(() => {
-		console.log("Inside setTimeout function");
         if (result !== "Nothing Found") {
             document.querySelector(`.${result}`).style.display = 'flex';
+            playSound(soundWin); // Play the win sound
+        } else {
+            playSound(soundFail); // Play the fail sound
         }
     }, 2300);
 
