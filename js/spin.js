@@ -66,11 +66,12 @@ spinButton.addEventListener('click', function () {
         } else if (result === "Nothing Found") {
             wheelBaseImage.setAttribute('src', 'images/wheel_loss.png');
         }
+    }, 800); // Set the new image slightly before the end of the first rotation
 
-        wheelBaseImage.style.transition = "transform 1s ease-out";  // Using ease-out here
+    setTimeout(() => {
+        wheelBaseImage.style.transition = "transform 1.2s ease-out";
         wheelBaseImage.style.transform = `rotate(${randomDeg + 360}deg)`; // Additional rotation
-
-    }, 1000); // After 1 second of spinning the base wheel
+    }, 1000); // Apply the rotation slightly after setting the new image
 
     if (result !== "Nothing Found") {
         document.querySelector(`.${result}`).style.display = 'flex';
