@@ -7,7 +7,7 @@ const wheelBaseImage = document.querySelector('.wheel_base');
 
 function updateCountdown() {
     const today = new Date();
-    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 59, 0); 
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 49, 0); 
     const currentTime = Date.now();
     const diff = eventTime - currentTime;
 
@@ -38,7 +38,7 @@ spinButton.style.cursor = 'not-allowed';
 spinButton.addEventListener('click', function() {
     if (!canSpin || hasSpun) return;
 
-    let randomDeg = 360 + Math.floor(Math.random() * 360);  // Ensure 1 spin minimum and then a random amount.
+    let randomDeg = 360 + Math.floor(Math.random() * 360);
 
     wheelBaseImage.style.transition = "transform 1s";
     wheelBaseImage.style.transform = `rotate(${randomDeg}deg)`;
@@ -69,7 +69,7 @@ spinButton.addEventListener('click', function() {
             wheelBaseImage.setAttribute('src', 'images/wheel_loss.png');
         }
 
-        wheelBaseImage.style.transition = "transform 1s";
+        wheelBaseImage.style.transition = "transform 1s ease-out";  // Using ease-out here
         wheelBaseImage.style.transform = `rotate(${randomDeg + 360}deg)`; // Additional rotation
 
     }, 1000); // After 1 second of spinning the base wheel
