@@ -39,6 +39,7 @@ spinButton.addEventListener('click', function () {
     if (!canSpin || hasSpun) return;
 
     let randomValue = Math.random() * 100;
+    let result;
     let resultRotation;
 
     if (randomValue < 0.1) {
@@ -63,9 +64,13 @@ spinButton.addEventListener('click', function () {
     wheelBaseImage.style.transition = "transform 2s ease-out"; 
     wheelBaseImage.style.transform = `rotate(${resultRotation}deg)`;
 
-    if (result !== "Nothing Found") {
-        document.querySelector(`.${result}`).style.display = 'flex';
-    }
+console.log("About to set timeout for popup display");
+    setTimeout(() => {
+		console.log("Inside setTimeout function");
+        if (result !== "Nothing Found") {
+            document.querySelector(`.${result}`).style.display = 'flex';
+        }
+    }, 3000);
 
     hasSpun = true;
     spinButton.textContent = "No More Try";
