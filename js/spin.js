@@ -70,7 +70,7 @@ console.log("About to set timeout for popup display");
         if (result !== "Nothing Found") {
             document.querySelector(`.${result}`).style.display = 'flex';
         }
-    }, 3000);
+    }, 2300);
 
     hasSpun = true;
     spinButton.textContent = "No More Try";
