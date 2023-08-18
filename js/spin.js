@@ -1,13 +1,13 @@
 const spinButton = document.querySelector('.loot_button');
-let whitelistSpots = 150; // Initial number of whitelist spots
-let hasSpun = false; 
+let whitelistSpots = 150; 
+let hasSpun = false;
 let canSpin = false; 
 
-const wheelBaseImage = document.querySelector('.wheel_base'); // Select the wheel_base image element
+const wheelBaseImage = document.querySelector('.wheel_base');
 
 function updateCountdown() {
     const today = new Date();
-    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 49, 0); 
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 59, 0); 
     const currentTime = Date.now();
     const diff = eventTime - currentTime;
 
@@ -38,11 +38,15 @@ spinButton.style.cursor = 'not-allowed';
 spinButton.addEventListener('click', function() {
     if (!canSpin || hasSpun) return;
 
-    wheelBaseImage.style.transition = "transform 2s";
-    wheelBaseImage.style.transform = 'rotate(' + (720 + (Math.floor(Math.random() * 360))) + 'deg)';
+    let randomDeg = 360 + Math.floor(Math.random() * 360);  // Ensure 1 spin minimum and then a random amount.
+
+    wheelBaseImage.style.transition = "transform 1s";
+    wheelBaseImage.style.transform = `rotate(${randomDeg}deg)`;
 
     let randomValue = Math.random() * 100;
     let result;
+
+    // ... (Determining the result)
 
     if (randomValue < 0.1) {
         result = "popup_win_prize_1";
@@ -65,8 +69,10 @@ spinButton.addEventListener('click', function() {
             wheelBaseImage.setAttribute('src', 'images/wheel_loss.png');
         }
 
-        wheelBaseImage.style.transform = 'none';
-    }, 2000);
+        wheelBaseImage.style.transition = "transform 1s";
+        wheelBaseImage.style.transform = `rotate(${randomDeg + 360}deg)`; // Additional rotation
+
+    }, 1000); // After 1 second of spinning the base wheel
 
     if (result !== "Nothing Found") {
         document.querySelector(`.${result}`).style.display = 'flex';
