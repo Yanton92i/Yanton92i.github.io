@@ -7,7 +7,7 @@ const wheelBaseImage = document.querySelector('.wheel_base'); // Select the whee
 
 function updateCountdown() {
     const today = new Date();
-    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 45, 0); 
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 49, 0); 
     const currentTime = Date.now();
     const diff = eventTime - currentTime;
 
