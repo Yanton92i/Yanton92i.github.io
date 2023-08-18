@@ -1,14 +1,13 @@
 const spinButton = document.querySelector('.loot_button');
-let whitelistSpots = 150;
-let hasSpun = false;
-let canSpin = false;
+let whitelistSpots = 150; // Initial number of whitelist spots
+let hasSpun = false; 
+let canSpin = false; 
 
-// Reference to the wheel image
-let wheelBaseImage = document.querySelector('.wheel_base');
+const wheelBaseImage = document.querySelector('.wheel_base'); // Select the wheel_base image element
 
 function updateCountdown() {
     const today = new Date();
-    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 34, 0);
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 03, 08, 0); 
     const currentTime = Date.now();
     const diff = eventTime - currentTime;
 
@@ -16,7 +15,7 @@ function updateCountdown() {
         clearInterval(countdownInterval);
         spinButton.textContent = "Spin";
         if (!hasSpun) {
-            canSpin = true;
+            canSpin = true; 
             spinButton.style.pointerEvents = 'auto';
             spinButton.style.cursor = 'pointer';
         }
@@ -39,7 +38,6 @@ spinButton.style.cursor = 'not-allowed';
 spinButton.addEventListener('click', function() {
     if (!canSpin || hasSpun) return;
 
-    // Wheel rotation logic
     wheelBaseImage.style.transition = "transform 2s";
     wheelBaseImage.style.transform = 'rotate(' + (720 + (Math.floor(Math.random() * 360))) + 'deg)';
 
@@ -60,15 +58,15 @@ spinButton.addEventListener('click', function() {
         result = "Nothing Found";
     }
 
-    if (result !== "Nothing Found" && result.startsWith('popup_win')) {
-        setTimeout(() => {
+    setTimeout(() => {
+        if (result !== "Nothing Found" && result.startsWith('popup_win')) {
             wheelBaseImage.setAttribute('src', 'images/wheel_win.png');
-        }, 2000);
-    } else if (result === "Nothing Found") {
-        setTimeout(() => {
+        } else if (result === "Nothing Found") {
             wheelBaseImage.setAttribute('src', 'images/wheel_loss.png');
-        }, 2000);
-    }
+        }
+
+        wheelBaseImage.style.transform = 'none';
+    }, 2000);
 
     if (result !== "Nothing Found") {
         document.querySelector(`.${result}`).style.display = 'flex';
