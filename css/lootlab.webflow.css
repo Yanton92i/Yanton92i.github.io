@@ -228,22 +228,13 @@
   right: 0%;
 }
 
-@keyframes rotate360 {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .wheele {
   width: auto;
   height: auto;
   justify-content: center;
   align-items: center;
   display: flex;
-  animation: rotate360 25s linear infinite;
+  position: relative;
 }
 
 .loot {
@@ -264,7 +255,7 @@
   padding: 15px;
 }
 
-.image-3 {
+.wheel_base {
   width: 350px;
   height: 350px;
 }
@@ -785,6 +776,14 @@
   line-height: 18px;
 }
 
+.wheel_arrow {
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+}
+
 @media screen and (min-width: 1920px) {
   .header {
     height: 85px;
@@ -840,7 +839,7 @@
     padding: 35px;
   }
 
-  .image-3 {
+  .wheel_base {
     width: 600px;
     height: 600px;
   }
@@ -1008,7 +1007,7 @@
     margin-bottom: 35px;
   }
 
-  .image-3 {
+  .wheel_base {
     width: 300px;
     height: 300px;
   }
@@ -1032,6 +1031,13 @@
 
   .presale_block {
     align-items: flex-start;
+  }
+
+  .wheel_arrow {
+    width: 300px;
+    height: 300px;
+    left: auto;
+    right: auto;
   }
 }
 
@@ -1321,7 +1327,7 @@
     padding-right: 0;
   }
 
-  .image-3 {
+  .wheel_base {
     width: 280px;
     height: 280px;
   }
