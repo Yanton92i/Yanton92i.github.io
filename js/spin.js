@@ -57,7 +57,7 @@ spinButton.addEventListener('click', function () {
         resultRotation = 720;
     } else {
         result = "Nothing Found";
-        resultRotation = 735;
+        resultRotation = 766;
     }
 
     wheelBaseImage.style.transition = "transform 2s ease-out"; 
