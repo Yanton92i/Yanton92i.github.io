@@ -40,7 +40,7 @@ spinButton.addEventListener('click', function () {
 
     let randomDeg = 720 + Math.floor(Math.random() * 360); // Rotate 2 full circles + a random value
 
-    wheelBaseImage.style.transition = "transform 2s ease-in";
+    wheelBaseImage.style.transition = "transform 2s ease-out";
     wheelBaseImage.style.transform = `rotate(${randomDeg}deg)`;
 
     let randomValue = Math.random() * 100;
