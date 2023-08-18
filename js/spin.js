@@ -21,7 +21,7 @@ function playSound(effect) {
 
 function updateCountdown() {
     const today = new Date();
-    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 07, 55, 0);
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 08, 09, 0);
     const currentTime = Date.now();
     const diff = eventTime - currentTime;
 
