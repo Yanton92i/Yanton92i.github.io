@@ -38,38 +38,30 @@ spinButton.style.cursor = 'not-allowed';
 spinButton.addEventListener('click', function () {
     if (!canSpin || hasSpun) return;
 
-    let randomDeg = 720 + Math.floor(Math.random() * 360);
-
-    wheelBaseImage.style.transition = "transform 2s ease-in";
-    wheelBaseImage.style.transform = `rotate(${randomDeg}deg)`;
-
     let randomValue = Math.random() * 100;
-    let result;
+    let resultRotation;
 
     if (randomValue < 0.1) {
         result = "popup_win_prize_1";
+        resultRotation = 720;
     } else if (randomValue < 0.3) {
         result = "popup_win_prize_2";
+        resultRotation = 720;
     } else if (randomValue < 0.8) {
         result = "popup_win_prize_3";
+        resultRotation = 720;
     } else if (randomValue < (whitelistSpots / 150) * 49.7 + 0.8) {
         result = "popup_win_wl";
         whitelistSpots--;
         document.querySelector('.spots').textContent = whitelistSpots;
+        resultRotation = 720;
     } else {
         result = "Nothing Found";
+        resultRotation = 735;
     }
 
-    setTimeout(() => {
-        wheelBaseImage.style.transition = "none";  // Remove any transition
-        wheelBaseImage.style.transform = 'none';  // Reset rotation
-
-        if (result !== "Nothing Found" && result.startsWith('popup_win')) {
-            wheelBaseImage.setAttribute('src', 'images/wheel_win.png');
-        } else if (result === "Nothing Found") {
-            wheelBaseImage.setAttribute('src', 'images/wheel_loss.png');
-        }
-    }, 2000);
+    wheelBaseImage.style.transition = "transform 2s ease-out"; 
+    wheelBaseImage.style.transform = `rotate(${resultRotation}deg)`;
 
     if (result !== "Nothing Found") {
         document.querySelector(`.${result}`).style.display = 'flex';
