@@ -1,13 +1,13 @@
 const spinButton = document.querySelector('.loot_button');
-let whitelistSpots = 150; 
+let whitelistSpots = 150;
 let hasSpun = false;
-let canSpin = false; 
+let canSpin = false;
 
 const wheelBaseImage = document.querySelector('.wheel_base');
 
 function updateCountdown() {
     const today = new Date();
-    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 03, 09, 0); 
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 03, 09, 0);
     const currentTime = Date.now();
     const diff = eventTime - currentTime;
 
@@ -15,7 +15,7 @@ function updateCountdown() {
         clearInterval(countdownInterval);
         spinButton.textContent = "Spin";
         if (!hasSpun) {
-            canSpin = true; 
+            canSpin = true;
             spinButton.style.pointerEvents = 'auto';
             spinButton.style.cursor = 'pointer';
         }
@@ -35,7 +35,7 @@ updateCountdown();
 spinButton.style.pointerEvents = 'none';
 spinButton.style.cursor = 'not-allowed';
 
-spinButton.addEventListener('click', function() {
+spinButton.addEventListener('click', function () {
     if (!canSpin || hasSpun) return;
 
     let randomDeg = 360 + Math.floor(Math.random() * 360);
@@ -45,8 +45,6 @@ spinButton.addEventListener('click', function() {
 
     let randomValue = Math.random() * 100;
     let result;
-
-    // ... (Determining the result)
 
     if (randomValue < 0.1) {
         result = "popup_win_prize_1";
