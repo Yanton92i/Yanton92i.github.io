@@ -1,72 +1,81 @@
 const spinButton = document.querySelector('.loot_button');
-let whitelistSpots = 150; // Initial number of whitelist spots
-let hasSpun = false; // You will need to replace this with logic that checks if the user's wallet has already spun
-let canSpin = false; // New variable to determine if spinning is allowed
+let whitelistSpots = 150;
+let hasSpun = false;
+let canSpin = false;
+
+// Reference to the wheel image
+let wheelBaseImage = document.querySelector('.wheel_base');
 
 function updateCountdown() {
-  const today = new Date();
-  const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 03, 08, 0); // 9:50 PM UTC
-  const currentTime = Date.now();
-  const diff = eventTime - currentTime;
+    const today = new Date();
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 02, 34, 0);
+    const currentTime = Date.now();
+    const diff = eventTime - currentTime;
 
-  if (diff <= 0) {
-    clearInterval(countdownInterval);
-    spinButton.textContent = "Spin";
-    if (!hasSpun) {
-      canSpin = true; // Enable spinning
-      spinButton.style.pointerEvents = 'auto';
-      spinButton.style.cursor = 'pointer';
+    if (diff <= 0) {
+        clearInterval(countdownInterval);
+        spinButton.textContent = "Spin";
+        if (!hasSpun) {
+            canSpin = true;
+            spinButton.style.pointerEvents = 'auto';
+            spinButton.style.cursor = 'pointer';
+        }
+        return;
     }
-    return;
-  }
 
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  spinButton.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    spinButton.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
-// Initialize the countdown
 const countdownInterval = setInterval(updateCountdown, 1000);
-updateCountdown(); // Call once to set the initial value
+updateCountdown();
 
 spinButton.style.pointerEvents = 'none';
 spinButton.style.cursor = 'not-allowed';
 
 spinButton.addEventListener('click', function() {
-  if (!canSpin || hasSpun) return; // Check if spinning is allowed
+    if (!canSpin || hasSpun) return;
 
-  // Adjust the probability for the whitelist spots
-  let whitelistProbability = (whitelistSpots / 150) * 49.7;
+    // Wheel rotation logic
+    wheelBaseImage.style.transition = "transform 2s";
+    wheelBaseImage.style.transform = 'rotate(' + (720 + (Math.floor(Math.random() * 360))) + 'deg)';
 
-  let randomValue = Math.random() * 100;
-  let result;
+    let randomValue = Math.random() * 100;
+    let result;
 
-  if (randomValue < 0.1) {
-    result = "popup_win_prize_1";
-  } else if (randomValue < 0.3) {
-    result = "popup_win_prize_2";
-  } else if (randomValue < 0.8) {
-    result = "popup_win_prize_3";
-  } else if (randomValue < whitelistProbability + 0.8) { // Adding the chances from the previous conditions
-    result = "popup_win_wl";
-    whitelistSpots--; // Decrement the whitelist spots
-    document.querySelector('.spots').textContent = whitelistSpots; // Update the displayed number of spots
-  } else {
-    spinButton.textContent = "Nothing Found";
-    hasSpun = true; // Set hasSpun to true even if "Nothing Found"
+    if (randomValue < 0.1) {
+        result = "popup_win_prize_1";
+    } else if (randomValue < 0.3) {
+        result = "popup_win_prize_2";
+    } else if (randomValue < 0.8) {
+        result = "popup_win_prize_3";
+    } else if (randomValue < (whitelistSpots / 150) * 49.7 + 0.8) {
+        result = "popup_win_wl";
+        whitelistSpots--;
+        document.querySelector('.spots').textContent = whitelistSpots;
+    } else {
+        result = "Nothing Found";
+    }
+
+    if (result !== "Nothing Found" && result.startsWith('popup_win')) {
+        setTimeout(() => {
+            wheelBaseImage.setAttribute('src', 'images/wheel_win.png');
+        }, 2000);
+    } else if (result === "Nothing Found") {
+        setTimeout(() => {
+            wheelBaseImage.setAttribute('src', 'images/wheel_loss.png');
+        }, 2000);
+    }
+
+    if (result !== "Nothing Found") {
+        document.querySelector(`.${result}`).style.display = 'flex';
+    }
+
+    hasSpun = true;
+    spinButton.textContent = "No More Try";
     spinButton.style.pointerEvents = 'none';
     spinButton.style.cursor = 'not-allowed';
-    return; // If "Nothing Found," exit the function early, making the spin button unclickable
-  }
-
-  if (result) {
-    document.querySelector(`.${result}`).style.display = 'flex';
-  }
-
-  hasSpun = true; // You should replace this with logic that records that the user's wallet has spun
-  spinButton.textContent = "No More Try"; // Change the button text
-  spinButton.style.pointerEvents = 'none';
-  spinButton.style.cursor = 'not-allowed';
 });
