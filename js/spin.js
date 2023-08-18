@@ -10,6 +10,10 @@ const soundSpin = new Audio('../sfx/spin.mp3');
 const soundWin = new Audio('../sfx/win.mp3');
 const soundFail = new Audio('../sfx/fail.mp3');
 
+soundSpin.load();  // Preload the spin sound
+soundWin.load();   // Preload the win sound
+soundFail.load();  // Preload the fail sound
+
 function playSound(effect) {
     effect.currentTime = 0; // Reset the audio play time
     effect.play();
@@ -17,7 +21,7 @@ function playSound(effect) {
 
 function updateCountdown() {
     const today = new Date();
-    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 07, 46, 0);
+    const eventTime = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), 07, 55, 0);
     const currentTime = Date.now();
     const diff = eventTime - currentTime;
 
