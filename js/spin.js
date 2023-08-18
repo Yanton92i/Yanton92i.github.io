@@ -61,6 +61,8 @@ spinButton.addEventListener('click', function () {
     }
 
     setTimeout(() => {
+        // Reset the transform before changing the image
+        wheelBaseImage.style.transform = 'none';
         if (result !== "Nothing Found" && result.startsWith('popup_win')) {
             wheelBaseImage.setAttribute('src', 'images/wheel_win.png');
         } else if (result === "Nothing Found") {
