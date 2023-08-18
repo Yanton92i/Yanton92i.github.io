@@ -38,9 +38,9 @@ spinButton.style.cursor = 'not-allowed';
 spinButton.addEventListener('click', function () {
     if (!canSpin || hasSpun) return;
 
-    let randomDeg = 720 + Math.floor(Math.random() * 360); // Rotate 2 full circles + a random value
+    let randomDeg = 720 + Math.floor(Math.random() * 360);
 
-    wheelBaseImage.style.transition = "transform 2s ease-out";
+    wheelBaseImage.style.transition = "transform 2s ease-in";
     wheelBaseImage.style.transform = `rotate(${randomDeg}deg)`;
 
     let randomValue = Math.random() * 100;
@@ -61,14 +61,15 @@ spinButton.addEventListener('click', function () {
     }
 
     setTimeout(() => {
-        // Reset the transform before changing the image
-        wheelBaseImage.style.transform = 'none';
+        wheelBaseImage.style.transition = "none";  // Remove any transition
+        wheelBaseImage.style.transform = 'none';  // Reset rotation
+
         if (result !== "Nothing Found" && result.startsWith('popup_win')) {
             wheelBaseImage.setAttribute('src', 'images/wheel_win.png');
         } else if (result === "Nothing Found") {
             wheelBaseImage.setAttribute('src', 'images/wheel_loss.png');
         }
-    }, 2000); // Switch image after 2 seconds of spinning
+    }, 2000);
 
     if (result !== "Nothing Found") {
         document.querySelector(`.${result}`).style.display = 'flex';
