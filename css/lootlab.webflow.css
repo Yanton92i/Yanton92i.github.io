@@ -778,6 +778,7 @@
 
 .wheel_arrow {
   position: absolute;
+  z-index: 80;
   top: 0%;
   bottom: 0%;
   left: 0%;
